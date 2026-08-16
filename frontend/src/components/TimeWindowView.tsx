@@ -86,7 +86,7 @@ export function TimeWindowView() {
     const timeToX = (t: number) => ((t - DISPLAY_MIN) / (DISPLAY_MAX - DISPLAY_MIN)) * w;
 
     ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = theme === "dark" ? "#1c1c1e" : "#ffffff";
+    ctx.fillStyle = theme === "dark" ? "#1e232b" : "#fbfcfd";
     ctx.fillRect(0, 0, w, h);
 
     const grid = theme === "dark" ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)";
@@ -99,7 +99,7 @@ export function TimeWindowView() {
       ctx.lineTo(x, h);
       ctx.stroke();
       ctx.fillStyle = theme === "dark" ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.5)";
-      ctx.font = "11px -apple-system, 'SF Pro Text', 'Segoe UI Variable', sans-serif";
+      ctx.font = "11px 'Segoe UI Variable', 'Segoe UI', 'Microsoft YaHei UI', sans-serif";
       ctx.fillText(`${t}s`, x + 4, h - 6);
     }
     ctx.strokeStyle = theme === "dark" ? "rgba(255,255,255,0.28)" : "rgba(0,0,0,0.28)";
@@ -166,13 +166,13 @@ export function TimeWindowView() {
       ctx.fillStyle = accent;
       ctx.fillRect(x - 4, 8, 8, h - 16);
       ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 10px -apple-system, sans-serif";
+      ctx.font = "bold 10px 'Segoe UI', 'Microsoft YaHei UI', sans-serif";
       ctx.fillText(mode === "left" ? "◀" : "▶", x - 2.5, h / 2 + 3.5);
     }
     // 时长标签
     const duration = draft.tmax - draft.tmin;
     ctx.fillStyle = theme === "dark" ? "#ffffff" : "#1c1c1e";
-    ctx.font = "600 12px -apple-system, 'SF Pro Text', sans-serif";
+    ctx.font = "600 12px 'Segoe UI Variable', 'Segoe UI', 'Microsoft YaHei UI', sans-serif";
     const label = `${duration.toFixed(2)} s · ${Math.round(duration * 100) + 1} 采样`;
     const labelWidth = ctx.measureText(label).width + 14;
     const labelX = Math.min(Math.max((x1 + x2) / 2 - labelWidth / 2, 6), w - labelWidth - 6);

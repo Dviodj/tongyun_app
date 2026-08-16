@@ -1,4 +1,4 @@
-"""通韵 TongYun BCI 桥接服务。
+"""通韵 TongYun App 桥接服务。
 
 本地 HTTP 服务：同时提供构建后的前端页面与脑电解码 API。
 

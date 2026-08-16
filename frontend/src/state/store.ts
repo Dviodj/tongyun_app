@@ -380,7 +380,7 @@ export const useAppStore = create<AppState>()(
         }),
     }),
     {
-      name: "tongyun-bci-settings",
+      name: "tongyun-app-settings",
       partialize: (state) => ({
         theme: state.theme,
         accent: state.accent,

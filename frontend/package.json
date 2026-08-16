@@ -1,9 +1,9 @@
 {
-  "name": "tongyun-bci-web",
+  "name": "tongyun_app",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
-  "description": "通韵 TongYun BCI — 脑电莫尔斯码识别前端（macOS 风格）",
+  "description": "通韵 TongYun App 前端 — 科研风格脑电莫尔斯码识别界面",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -235,8 +235,8 @@ export function WaveformPanel() {
     const w = rect.width;
     const h = rect.height;
     const theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-    const bg = theme === "dark" ? "#1c1c1e" : "#ffffff";
-    const grid = theme === "dark" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.06)";
+    const bg = theme === "dark" ? "#1e232b" : "#fbfcfd";
+    const grid = theme === "dark" ? "rgba(255,255,255,0.06)" : "#e3e7ec";
     const laneH = h / 3;
 
     ctx.clearRect(0, 0, w, h);
@@ -275,7 +275,7 @@ export function WaveformPanel() {
     }
 
     // 通道标签
-    ctx.font = "600 11px -apple-system, 'SF Pro Text', 'Segoe UI Variable', sans-serif";
+    ctx.font = "600 11px 'Segoe UI Variable', 'Segoe UI', 'Microsoft YaHei UI', sans-serif";
     for (let lane = 0; lane < laneCount; lane += 1) {
       ctx.fillStyle = CHANNEL_COLORS[lane];
       ctx.fillText(CHANNEL_NAMES[lane], 10, lane * laneH + 18);
@@ -363,8 +363,8 @@ export function WaveformPanel() {
     const w = rect.width;
     const h = rect.height;
     const theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-    const bg = theme === "dark" ? "#1c1c1e" : "#ffffff";
-    const grid = theme === "dark" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.06)";
+    const bg = theme === "dark" ? "#1e232b" : "#fbfcfd";
+    const grid = theme === "dark" ? "rgba(255,255,255,0.06)" : "#e3e7ec";
     const laneH = h / 3;
 
     ctx.clearRect(0, 0, w, h);
@@ -374,7 +374,7 @@ export function WaveformPanel() {
     const displayLen = liveWave.traces[0]?.length ?? 0;
     if (displayLen === 0) {
       ctx.fillStyle = theme === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
-      ctx.font = "13px -apple-system, 'SF Pro Text', 'Segoe UI Variable', sans-serif";
+      ctx.font = "13px 'Segoe UI Variable', 'Segoe UI', 'Microsoft YaHei UI', sans-serif";
       ctx.textAlign = "center";
       ctx.fillText("等待设备数据…", w / 2, h / 2);
       ctx.textAlign = "start";
@@ -406,7 +406,7 @@ export function WaveformPanel() {
       ctx.stroke();
     }
 
-    ctx.font = "600 11px -apple-system, 'SF Pro Text', 'Segoe UI Variable', sans-serif";
+    ctx.font = "600 11px 'Segoe UI Variable', 'Segoe UI', 'Microsoft YaHei UI', sans-serif";
     for (let lane = 0; lane < 3; lane += 1) {
       ctx.fillStyle = CHANNEL_COLORS[lane];
       ctx.fillText(CHANNEL_NAMES[lane], 10, lane * laneH + 18);

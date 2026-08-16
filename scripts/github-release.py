@@ -1,11 +1,18 @@
-"""GitHub Release 创建与资产上传（读取 Windows 凭据管理器中的 token）。"""
+"""GitHub Release 创建与资产上传（读取 Windows 凭据管理器中的 token）。
+
+用法：
+    python scripts/github-release.py release   # 创建 Release
+    python scripts/github-release.py assets    # 上传安装器与便携版
+"""
 import json
 import subprocess
 import sys
+import urllib.parse
 import urllib.request
 
-REPO = "Dviodj/tongyun-bci-web"
+REPO = "Dviodj/tongyun_app"
 API = "https://api.github.com"
+VERSION = "1.1.0"
 
 
 def get_token() -> str:
@@ -45,14 +52,14 @@ def main() -> None:
     mode = sys.argv[1] if len(sys.argv) > 1 else "release"
     if mode == "release":
         payload = {
-            "tag_name": "v1.0.0",
-            "name": "通韵 TongYun 1.0.0",
+            "tag_name": f"v{VERSION}",
+            "name": f"通韵 TongYun App {VERSION}",
             "body": (
-                "首个桌面软件版本。\n\n## 内容\n"
-                "- Windows 桌面应用（Electron，无边框 macOS 风格窗口，交通灯可点击）\n"
+                f"通韵 TongYun App {VERSION}（科研软件风格界面）。\n\n## 内容\n"
+                "- Windows 桌面应用（Electron + Python 桥接后端）\n"
                 "- 模拟 / 正式双模式：正式模式支持脑电文件解码与 LSL 设备实时解码\n"
                 "- Hybrid FBC-MIFormer 深度学习算法（权重自备，见算法仓库）+ 频带能量 LDA 回退 + 模拟模式\n"
-                "- 单词预测（最可能的一个）、莫尔斯码、三通道波形、可拖动时间窗、明暗主题与板块显隐\n\n"
+                "- 单词预测（最可能的一个）、莫尔斯码、三通道波形、可拖动时间窗、底部状态栏、明暗主题与板块显隐\n\n"
                 "## 使用\n"
                 "1. 安装器安装，或直接运行便携版 exe\n"
                 "2. 首次运行需要本机 Python 3.9+（numpy/scipy/scikit-learn，启动界面可一键安装）\n"
@@ -70,13 +77,11 @@ def main() -> None:
         with open("upload_url.txt", encoding="utf-8") as handle:
             upload_url = handle.read().strip().replace("{?name,label}", "")
         files = [
-            (r"D:\deepseek\tongyun-bci-web\desktop\release\TongYun-BCI-Setup-1.0.0.exe",
-             "TongYun-BCI-Setup-1.0.0.exe"),
-            (r"D:\deepseek\tongyun-bci-web\desktop\release\TongYun-BCI-Portable-1.0.0.exe",
-             "TongYun-BCI-Portable-1.0.0.exe"),
+            (rf"D:\deepseek\tongyun_app\desktop\release\TongYun-App-Setup-{VERSION}.exe",
+             f"TongYun-App-Setup-{VERSION}.exe"),
+            (rf"D:\deepseek\tongyun_app\desktop\release\TongYun-App-Portable-{VERSION}.exe",
+             f"TongYun-App-Portable-{VERSION}.exe"),
         ]
-        import urllib.parse
-
         for path, name in files:
             with open(path, "rb") as handle:
                 data = handle.read()

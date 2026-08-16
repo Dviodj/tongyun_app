@@ -13,7 +13,7 @@ from pathlib import Path
 import torch
 
 ROOT = Path(__file__).resolve().parent.parent
-# 算法仓库：环境变量优先，其次项目同级目录（tongyun-bci-web 与 tongyun-bci-algorithm 并排）
+# 算法仓库：环境变量优先，其次项目同级目录（tongyun_app 与 tongyun-bci-algorithm 并排）
 ALGO_REPO = Path(
     os.environ.get("TONGYUN_ALGORITHM_REPO", ROOT.parent.parent / "tongyun-bci-algorithm")
 ).resolve()

@@ -1,56 +1,33 @@
-# 📤 上传新仓库到 GitHub 指南
+# 📤 上传到 GitHub 指南（tongyun_app）
 
-本仓库已完整打包在本地，按下面的步骤上传为一个**新的 GitHub 仓库**。
+本仓库已在 GitHub 上线：<https://github.com/Dviodj/tongyun_app>
 
-## 方式一：GitHub 网页创建（推荐，全程可视化）
-
-1. 打开 <https://github.com/new>
-2. **Repository name** 填 `tongyun-bci-web`（或你喜欢的名字）
-3. **Description** 可填：`通韵 TongYun BCI 前端 — macOS 风格脑电莫尔斯码识别界面`
-4. 选择 **Public**（公开）或 **Private**（私有）
-5. ⚠️ **不要**勾选 “Add a README file / .gitignore / license”（本仓库已自带，勾了会导致首次推送冲突）
-6. 点 **Create repository**，记下页面显示的仓库地址，例如：
-   `https://github.com/Dviodj/tongyun-bci-web.git`
-
-## 方式二：命令行创建
+## 日常更新
 
 ```powershell
-# 先在本机登录 GitHub（没有 gh 的话先去 https://cli.github.com 安装）
-gh auth login
-gh repo create tongyun-bci-web --public --source . --push
-# 完成后直接跳到「完成」——方式二会自动推送
+cd D:\deepseek\tongyun_app
+git add -A
+git commit -m "描述本次改动"
+git push
 ```
 
-## 本地推送（方式一创建完仓库后）
+首次在本机推送时若提示凭据：GitHub 已停用密码推送，请使用 Personal Access Token
+（GitHub 网页 → Settings → Developer settings → Personal access tokens → 勾选 repo）作为密码。
+
+## 发布新版本（桌面安装包）
 
 ```powershell
-cd D:\deepseek\tongyun-bci-web
+# 1. 重新构建前端与安装器
+cd frontend && npm run build && cd ..
+cd desktop  && npm run dist && cd ..
 
-git init -b main
-git add .
-git commit -m "feat: 通韵 TongYun BCI Web 前端 — macOS 风格脑电莫尔斯识别界面"
-
-# 首次推送需要凭据：GitHub 已停用密码推送，
-# 在浏览器生成 Personal Access Token（repo 权限）后用它当密码：
-#   https://github.com/settings/tokens -> Generate new token (classic) -> 勾选 repo
-git remote add origin https://github.com/<你的用户名>/tongyun-bci-web.git
-git push -u origin main
+# 2. 创建 Release 并上传安装器（自动读取本机 GitHub 凭据）
+python scripts/github-release.py release
+python scripts/github-release.py assets
 ```
 
-> 💡 为避免每次输入凭据，可运行 `git config --global credential.helper manager-core`，首次输入一次后 Windows 会记住。
+## 说明
 
-## 完成 ✅
-
-推送成功后访问 `https://github.com/<你的用户名>/tongyun-bci-web` 即可看到仓库。
-
-### 建议补充（可选）
-
-- 在仓库 **Settings → General → Social preview** 上传一张截图（可用 `docs/screenshots/main.png`）
-- 若日后想把算法仓库一并关联，可在 README 中加链接或使用 `git submodule add https://github.com/Dviodj/tongyun-bci-algorithm.git`
-- **桌面版安装包**（`desktop/release/*.exe`）不入库：在 Release 页面手动上传，或让用户按 README「桌面版打包」自行构建
-
-### 注意
-
-- 不要提交 `backend/data/`（运行时上传缓存）与 `frontend/scripts/count_*.txt`（原始语料，已在 .gitignore 中排除）
+- `backend/data/`、`desktop/release/`、`desktop/node_modules/`、`frontend/dist/` 已忽略，不入库
 - 训练权重 `.pt/.pth` 不属于本仓库，按算法仓库说明单独训练与部署
-- `desktop/node_modules`、`desktop/release` 已忽略；`tongyun-bci-algorithm/` 是算法包源码副本（随桌面版打包），更新算法后同步复制
+- `tongyun-bci-algorithm/` 是算法包源码副本（随桌面版打包），更新算法后同步复制

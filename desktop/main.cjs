@@ -1,9 +1,9 @@
-// 通韵 TongYun BCI 桌面应用主进程
+// 通韵 TongYun App 桌面应用主进程
 // 职责：解析资源路径 -> 启动 Python 桥接后端 -> 健康检查 -> 打开主窗口；
 //       依赖缺失时提供一键安装；后端崩溃时可重试；退出时清理子进程。
 "use strict";
 
-const { app, BrowserWindow, Menu, dialog, ipcMain, shell } = require("electron");
+const { app, BrowserWindow, Menu, dialog, shell } = require("electron");
 const { spawn, execFile } = require("child_process");
 const path = require("path");
 const fs = require("fs");
@@ -292,7 +292,7 @@ function createSplash() {
 function splashHtml() {
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     :root { color-scheme: dark; }
-    body { margin:0; font-family: -apple-system, "Segoe UI Variable", "Microsoft YaHei", sans-serif;
+    body { margin:0; font-family: "Segoe UI Variable", "Microsoft YaHei", sans-serif;
            background:#1e1e20; color:#f5f5f7; display:flex; flex-direction:column; height:100vh;
            -webkit-user-select:none; user-select:none; }
     .head { display:flex; align-items:center; gap:10px; padding:20px 22px 4px; }
@@ -368,14 +368,14 @@ function createMainWindow() {
     height: 900,
     minWidth: 1080,
     minHeight: 700,
-    show: SMOKE ? false : true,
-    frame: false,
-    backgroundColor: "#f2f2f7",
+    // 冒烟模式也显示窗口：隐藏窗口下 capturePage 只拍到背景色
+    show: true,
+    backgroundColor: "#eef0f3",
     icon: path.join(__dirname, "icon.png"),
     webPreferences: {
-      preload: path.join(__dirname, "preload.cjs"),
       contextIsolation: true,
       nodeIntegration: false,
+      backgroundThrottling: false,
     },
   });
 
@@ -404,16 +404,6 @@ function createMainWindow() {
 
   if (splash) splash.close();
 }
-
-// 窗口控制（交通灯）
-ipcMain.on("win:minimize", () => BrowserWindow.getFocusedWindow()?.minimize());
-ipcMain.on("win:toggle-maximize", () => {
-  const window = BrowserWindow.getFocusedWindow();
-  if (!window) return;
-  if (window.isMaximized()) window.unmaximize();
-  else window.maximize();
-});
-ipcMain.on("win:close", () => BrowserWindow.getFocusedWindow()?.close());
 
 let pendingPythonPath = null;
 
@@ -469,7 +459,7 @@ function buildMenu() {
             dialog.showMessageBox({
               type: "info",
               title: "关于",
-              message: "通韵 TongYun BCI",
+              message: "通韵 TongYun App",
               detail: `脑电 · 莫尔斯码输入系统\n后端：${BACKEND_PY}\n数据目录：${app.getPath("userData")}`,
             }),
         },

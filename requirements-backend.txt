@@ -1,4 +1,4 @@
-# 通韵 TongYun BCI Web — 后端依赖
+# 通韵 TongYun App Web — 后端依赖
 # 基础（必需）
 numpy
 scipy

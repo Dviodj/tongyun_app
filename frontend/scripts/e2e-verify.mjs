@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 
 const EDGE = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const BASE = "http://127.0.0.1:8765/";
-const FIF = "D:\\deepseek\\tongyun-bci-web\\sample-data\\hello-world\\02_error_h_to_b_dot_to_dash_raw.fif";
+const FIF = "D:\\deepseek\\tongyun_app\\sample-data\\hello-world\\02_error_h_to_b_dot_to_dash_raw.fif";
 
 const results = [];
 const consoleErrors = [];
@@ -23,8 +23,9 @@ page.on("pageerror", (err) => consoleErrors.push(String(err)));
 // ---- 1. 主页面渲染 ----
 await page.goto(BASE + "#main", { waitUntil: "networkidle" });
 await page.waitForTimeout(800);
-check("标题栏渲染", await page.locator(".titlebar-title").count() === 1);
-check("交通灯渲染", (await page.locator(".traffic-lights .light").count()) === 3);
+check("顶部应用栏渲染", (await page.locator(".app-header").count()) === 1);
+check("底部状态栏渲染", (await page.locator(".statusbar").count()) === 1);
+check("已移除交通灯", (await page.locator(".traffic-lights").count()) === 0);
 check("侧栏三个导航项", (await page.locator(".nav-item").count()) === 3);
 check("句子小组件存在", await page.locator(".sentence-card").isVisible());
 check("莫尔斯小组件存在", await page.locator(".morse-card").isVisible());

@@ -1,12 +1,12 @@
-# 通韵 TongYun BCI Web
+# 通韵 TongYun App（tongyun_app）
 
-🧠 基于 **tongyun--bci** 与 **tongyun-bci-algorithm** 的脑电-莫尔斯码识别软件前端：macOS 风格的三栏式界面，左侧控制栏（主页面 / 时间窗调整 / 设置），右侧显示区域。
+🧠 基于 **tongyun--bci** 与 **tongyun-bci-algorithm** 的脑电-莫尔斯码识别软件：科研软件风格的三栏式界面（中性灰配色、直角面板、底部状态栏），左侧控制栏（主页面 / 时间窗调整 / 设置），右侧显示区域。
 
 ![主页](docs/screenshots/main.png)
 
 ## ✨ 功能
 
-### 双模式（标题栏状态可点击切换）
+### 双模式（顶部应用栏状态可点击切换）
 
 - **模拟模式**：开箱即用的演示体验——生成模拟脑电回放、`?demo=HELLO WORLD` 一键演示
 - **正式模式**：真实解码工作台——
@@ -25,7 +25,7 @@
 - 应用后作用于新解析的 GDF/EDF/FIF；送入模型前统一重采样回 3×351，保持与训练分布一致
 
 ### 设置
-- 主题：浅色 / 深色 / 跟随系统，8 种 macOS 强调色
+- 主题：浅色 / 深色 / 跟随系统，8 种强调色
 - 布局：下半区上下堆叠 / 左右并排
 - 板块显隐：识别句子、单词预测、莫尔斯码、波形图均可独立开关
 - 置信门控阈值（0.5–0.95）实时应用到算法桥接服务
@@ -62,7 +62,7 @@ cd desktop  && npm install && npm run dist
 ```
 
 桌面版特性：
-- 无边框 macOS 风格窗口，红黄绿交通灯可点击（关闭/最小化/最大化）
+- 原生窗口边框，科研软件风格界面（顶部应用栏 + 底部状态栏）
 - 启动时自动检测 Python 与后端依赖（numpy/scipy/scikit-learn），缺失时一键 `pip install`
 - 后端作为子进程随应用启停，崩溃自动提示重试；算法仓库（深度学习版）源码随安装包分发
 - 首次运行需要本机 Python 3.9+（解析 GDF/EDF/FIF 与加载权重另需 mne / torch，按提示安装）
@@ -156,7 +156,7 @@ LSL 设备流按 3.5 s 滑动窗口切分（采样率自适应），优先匹配
 ## 📁 目录结构
 
 ```
-tongyun-bci-web/
+tongyun_app/
 ├── backend/
 │   ├── backend.py            # 桥接服务（页面 + 算法 API）
 │   └── tools/debug_features.py  # 回退分类器特征选择实验
@@ -165,7 +165,7 @@ tongyun-bci-web/
 │   │   ├── components/       # 标题栏/侧栏/主页面/时间窗/设置/波形 Canvas
 │   │   ├── lib/predictor/    # n-gram 语言模型
 │   │   ├── state/store.ts    # zustand 全局状态
-│   │   └── styles.css        # macOS 设计系统（明暗双主题）
+│   │   └── styles.css        # 科研软件设计系统（明暗双主题）
 │   └── scripts/              # 语料构建、冒烟测试、E2E
 ├── desktop/                  # Electron 桌面壳（安装器/便携版打包）
 │   ├── main.cjs / preload.cjs / icon.png

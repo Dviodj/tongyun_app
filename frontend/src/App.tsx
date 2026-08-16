@@ -1,8 +1,9 @@
-/** 应用外壳：标题栏 + 左侧控制栏 + 右侧内容区。 */
+/** 应用外壳：顶部应用栏 + 左侧控制栏 + 右侧内容区 + 底部状态栏。 */
 import { useEffect } from "react";
 import { getHealth, getWindow } from "./api/client";
 import { useAppStore } from "./state/store";
-import { TitleBar } from "./components/TitleBar";
+import { HeaderBar } from "./components/HeaderBar";
+import { StatusBar } from "./components/StatusBar";
 import { Sidebar } from "./components/Sidebar";
 import { MainView } from "./components/MainView";
 import { TimeWindowView } from "./components/TimeWindowView";
@@ -118,7 +119,7 @@ export function App() {
 
   return (
     <div className="app-shell">
-      <TitleBar />
+      <HeaderBar />
       <div className="app-body">
         <Sidebar />
         <main className="content-area">
@@ -127,6 +128,7 @@ export function App() {
           {view === "settings" && <SettingsView />}
         </main>
       </div>
+      <StatusBar />
     </div>
   );
 }

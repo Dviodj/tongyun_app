@@ -1,35 +1,13 @@
-/** macOS 风格标题栏：红黄绿交通灯 + 居中标题 + 右侧可点击的模式切换。 */
+/** 顶部应用栏：项目标识 + 模式切换 + 算法/实时状态。 */
 import { ArrowsLeftRight, WifiHigh, WifiSlash } from "@phosphor-icons/react";
 import { useAppStore } from "../state/store";
 
-export function TitleBar() {
+export function HeaderBar() {
   const health = useAppStore((state) => state.algorithmHealth);
   const status = useAppStore((state) => state.status);
   const mode = useAppStore((state) => state.mode);
   const toggleMode = useAppStore((state) => state.toggleMode);
   const live = useAppStore((state) => state.live);
-  const desktop = window.tongyunDesktop;
-  const controls = desktop?.controls;
-
-  const handle = (action: "close" | "minimize" | "toggleMaximize") => {
-    if (!controls) return;
-    if (action === "close") controls.close();
-    else if (action === "minimize") controls.minimize();
-    else controls.toggleMaximize();
-  };
-
-  const lightProps = (action: "close" | "minimize" | "toggleMaximize", label: string) =>
-    desktop
-      ? {
-          role: "button" as const,
-          tabIndex: 0,
-          "aria-label": label,
-          onClick: () => handle(action),
-          onKeyDown: (event: React.KeyboardEvent) => {
-            if (event.key === "Enter" || event.key === " ") handle(action);
-          },
-        }
-      : {};
 
   const algorithmLabel = health.loading
     ? "连接算法…"
@@ -40,16 +18,13 @@ export function TitleBar() {
         : "未载入权重";
 
   return (
-    <header className="titlebar">
-      <div className={`traffic-lights ${desktop ? "is-functional" : ""}`} aria-hidden={!desktop}>
-        <span className="light light-close" {...lightProps("close", "关闭窗口")} />
-        <span className="light light-minimize" {...lightProps("minimize", "最小化")} />
-        <span className="light light-zoom" {...lightProps("toggleMaximize", "最大化/还原")} />
+    <header className="app-header">
+      <div className="header-brand">
+        <span>通韵 TongYun</span>
+        <span className="header-brand-sub">脑电莫尔斯识别</span>
+        <span className="header-brand-version">v1.1.0</span>
       </div>
-      <div className="titlebar-title">
-        通韵 <span className="titlebar-sub">TongYun · 脑电莫尔斯输入</span>
-      </div>
-      <div className="titlebar-status">
+      <div className="header-status">
         <button
           type="button"
           className={`mode-pill ${mode === "formal" ? "is-formal" : "is-simulation"}`}

@@ -1,6 +1,6 @@
 @echo off
 chcp 65001 >nul
-title 通韵 TongYun BCI
+title 通韵 TongYun App
 cd /d "%~dp0"
 
 where python >nul 2>nul
@@ -11,7 +11,7 @@ if errorlevel 1 (
 )
 
 echo ==========================================
-echo  通韵 TongYun BCI - 本地桥接服务
+echo  通韵 TongYun App - 本地桥接服务
 echo  页面: http://127.0.0.1:8765/
 echo  停止: 按 Ctrl+C
 echo ==========================================

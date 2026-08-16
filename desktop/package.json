@@ -1,9 +1,9 @@
 {
-  "name": "tongyun-desktop",
-  "version": "1.0.0",
+  "name": "tongyun_app-desktop",
+  "version": "1.1.0",
   "private": true,
-  "description": "通韵 TongYun BCI 桌面应用（Electron 壳 + Python 桥接后端）",
-  "author": "TongYun BCI contributors",
+  "description": "通韵 TongYun App 桌面应用（Electron 壳 + Python 桥接后端）",
+  "author": "TongYun App contributors",
   "main": "main.cjs",
   "scripts": {
     "start": "electron .",
@@ -18,14 +18,13 @@
   "build": {
     "appId": "com.tongyun.bci",
     "productName": "通韵 TongYun",
-    "copyright": "Copyright © 2026 TongYun BCI",
+    "copyright": "Copyright © 2026 TongYun App",
     "asar": true,
     "directories": {
       "output": "release"
     },
     "files": [
-      "main.cjs",
-      "preload.cjs"
+      "main.cjs"
     ],
     "extraResources": [
       {
@@ -76,10 +75,10 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "通韵 TongYun",
-      "artifactName": "TongYun-BCI-Setup-${version}.${ext}"
+      "artifactName": "TongYun-App-Setup-${version}.${ext}"
     },
     "portable": {
-      "artifactName": "TongYun-BCI-Portable-${version}.${ext}"
+      "artifactName": "TongYun-App-Portable-${version}.${ext}"
     }
   },
   "allowScripts": {

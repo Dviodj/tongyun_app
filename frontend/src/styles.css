@@ -1,59 +1,63 @@
 /* ==========================================================================
-   通韵 TongYun BCI — macOS 风格设计系统
+   通韵 TongYun App — 科研软件风格设计系统
+   中性灰配色 · 直角面板 · 数据优先 · 无装饰性模糊
    ========================================================================== */
 
 :root {
-  --accent: #0a84ff;
-  --accent-soft: rgba(10, 132, 255, 0.14);
-  --danger: #ff453a;
-  --success: #30d158;
-  --warning: #ff9f0a;
-  --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
-    "Helvetica Neue", "PingFang SC", "Segoe UI Variable", "Microsoft YaHei UI",
-    "Microsoft YaHei", sans-serif;
-  --mono-stack: "SF Mono", "Cascadia Code", Consolas, monospace;
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.12);
+  --danger: #d64545;
+  --success: #2e9e5b;
+  --warning: #c98a1b;
+  --font-stack: "Segoe UI Variable", "Segoe UI", "Microsoft YaHei UI",
+    "Microsoft YaHei", "PingFang SC", sans-serif;
+  --mono-stack: "Cascadia Code", Consolas, "Courier New", monospace;
 }
 
 :root[data-theme="light"] {
-  --bg: #f2f2f7;
-  --bg-deep: #e8e8ed;
-  --card-bg: rgba(255, 255, 255, 0.86);
+  --bg: #eef0f3;
+  --bg-deep: #e4e7eb;
+  --card-bg: #ffffff;
   --card-solid: #ffffff;
-  --text: #1d1d1f;
-  --text-2: #6e6e73;
-  --text-3: #98989d;
-  --border: rgba(0, 0, 0, 0.09);
-  --border-strong: rgba(0, 0, 0, 0.16);
-  --sidebar-bg: rgba(242, 242, 247, 0.72);
-  --nav-active: rgba(0, 0, 0, 0.065);
-  --nav-hover: rgba(0, 0, 0, 0.04);
-  --input-bg: rgba(0, 0, 0, 0.045);
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.07);
-  --canvas-bg: #ffffff;
-  --stream-empty: rgba(0, 0, 0, 0.06);
-  --chart-grid: rgba(0, 0, 0, 0.06);
-  --titlebar-bg: rgba(242, 242, 247, 0.65);
+  --text: #20242a;
+  --text-2: #5b6470;
+  --text-3: #8a929c;
+  --border: #d5d9df;
+  --border-strong: #b9bfc9;
+  --sidebar-bg: #f7f8fa;
+  --nav-active: #2563eb;
+  --nav-hover: #e9edf2;
+  --input-bg: #f2f4f6;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --canvas-bg: #fbfcfd;
+  --stream-empty: #e7eaee;
+  --chart-grid: #e3e7ec;
+  --header-bg: #ffffff;
+  --header-border: #d5d9df;
+  --statusbar-bg: #f2f4f6;
 }
 
 :root[data-theme="dark"] {
-  --bg: #1e1e20;
-  --bg-deep: #161617;
-  --card-bg: rgba(44, 44, 46, 0.82);
-  --card-solid: #2c2c2e;
-  --text: #f5f5f7;
-  --text-2: #a1a1a6;
-  --text-3: #6e6e73;
-  --border: rgba(255, 255, 255, 0.09);
-  --border-strong: rgba(255, 255, 255, 0.18);
-  --sidebar-bg: rgba(30, 30, 32, 0.68);
-  --nav-active: rgba(255, 255, 255, 0.09);
-  --nav-hover: rgba(255, 255, 255, 0.05);
-  --input-bg: rgba(255, 255, 255, 0.08);
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 10px 28px rgba(0, 0, 0, 0.3);
-  --canvas-bg: #1c1c1e;
-  --stream-empty: rgba(255, 255, 255, 0.08);
-  --chart-grid: rgba(255, 255, 255, 0.07);
-  --titlebar-bg: rgba(30, 30, 32, 0.6);
+  --bg: #23272e;
+  --bg-deep: #1b1f25;
+  --card-bg: #2b3038;
+  --card-solid: #2b3038;
+  --text: #e6e9ed;
+  --text-2: #a6adb8;
+  --text-3: #737b86;
+  --border: #3a414b;
+  --border-strong: #4b545f;
+  --sidebar-bg: #262b33;
+  --nav-active: #2563eb;
+  --nav-hover: #30363f;
+  --input-bg: #333a44;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --canvas-bg: #1e232b;
+  --stream-empty: #343b45;
+  --chart-grid: #2e3540;
+  --header-bg: #262b33;
+  --header-border: #3a414b;
+  --statusbar-bg: #20242b;
 }
 
 * {
@@ -69,7 +73,7 @@ body,
 
 body {
   font-family: var(--font-stack);
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -90,12 +94,6 @@ button {
   flex-direction: column;
   height: 100vh;
   background: var(--bg);
-  background-image: radial-gradient(
-      1200px 700px at 85% -10%,
-      var(--accent-soft),
-      transparent 60%
-    ),
-    radial-gradient(900px 500px at -10% 110%, rgba(48, 209, 88, 0.06), transparent 55%);
 }
 
 .app-body {
@@ -108,109 +106,65 @@ button {
   flex: 1;
   min-width: 0;
   overflow-y: auto;
-  padding: 16px 20px 24px;
+  padding: 14px 16px 18px;
 }
 
 /* --------------------------------------------------------------------------
-   标题栏（交通灯）
+   顶部应用栏（科研工具风格：标识 + 模式切换 + 状态）
    -------------------------------------------------------------------------- */
 
-.titlebar {
-  position: relative;
+.app-header {
   display: flex;
   align-items: center;
-  height: 44px;
-  padding: 0 16px;
+  height: 42px;
+  padding: 0 14px;
   flex-shrink: 0;
-  background: var(--titlebar-bg);
-  backdrop-filter: saturate(180%) blur(24px);
-  -webkit-backdrop-filter: saturate(180%) blur(24px);
-  border-bottom: 1px solid var(--border);
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
   user-select: none;
-  /* 桌面版无边框窗口的拖拽区域 */
-  -webkit-app-region: drag;
+  gap: 14px;
 }
 
-.traffic-lights {
+.header-brand {
   display: flex;
+  align-items: baseline;
   gap: 8px;
-  position: absolute;
-  left: 16px;
-  -webkit-app-region: no-drag;
-}
-
-.titlebar-status {
-  -webkit-app-region: no-drag;
-}
-
-.light {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.2);
-}
-
-.light-close { background: #ff5f57; }
-.light-minimize { background: #febc2e; }
-.light-zoom { background: #28c840; }
-
-/* 桌面版：交通灯悬停时显示 × − + 符号 */
-.traffic-lights.is-functional .light {
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  transition: transform 100ms ease;
-}
-
-.traffic-lights.is-functional .light:active {
-  transform: scale(0.88);
-}
-
-.traffic-lights.is-functional:hover .light::after {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 9px;
-  line-height: 1;
   font-weight: 700;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-.traffic-lights.is-functional:hover .light-close::after { content: "×"; }
-.traffic-lights.is-functional:hover .light-minimize::after { content: "−"; }
-.traffic-lights.is-functional:hover .light-zoom::after { content: "+"; }
-
-.titlebar-title {
-  flex: 1;
-  text-align: center;
-  font-weight: 700;
-  font-size: 13.5px;
+  font-size: 14px;
   letter-spacing: 0.2px;
+  white-space: nowrap;
 }
 
-.titlebar-sub {
+.header-brand-sub {
   font-weight: 500;
+  font-size: 11.5px;
   color: var(--text-2);
-  margin-left: 6px;
 }
 
-.titlebar-status {
-  position: absolute;
-  right: 16px;
+.header-brand-version {
+  font-family: var(--mono-stack);
+  font-size: 10.5px;
+  color: var(--text-3);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+.header-status {
+  margin-left: auto;
   display: flex;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
 }
 
 .status-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
+  gap: 5px;
+  font-size: 11.5px;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 999px;
+  padding: 3px 8px;
+  border-radius: 3px;
   border: 1px solid var(--border);
   background: var(--card-bg);
   color: var(--text-2);
@@ -218,26 +172,26 @@ button {
 
 .status-pill.is-ready {
   color: var(--success);
-  border-color: rgba(48, 209, 88, 0.4);
-  background: rgba(48, 209, 88, 0.1);
+  border-color: rgba(46, 158, 91, 0.45);
+  background: rgba(46, 158, 91, 0.08);
 }
 
 .status-pill.is-fallback {
   color: var(--warning);
-  border-color: rgba(255, 159, 10, 0.4);
-  background: rgba(255, 159, 10, 0.1);
+  border-color: rgba(201, 138, 27, 0.5);
+  background: rgba(201, 138, 27, 0.08);
 }
 
 .status-pill.is-sim {
   color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  border-color: rgba(37, 99, 235, 0.4);
   background: var(--accent-soft);
 }
 
 .status-pill.is-live {
   color: var(--danger);
-  border-color: rgba(255, 55, 95, 0.4);
-  background: rgba(255, 55, 95, 0.08);
+  border-color: rgba(214, 69, 69, 0.45);
+  background: rgba(214, 69, 69, 0.08);
 }
 
 /* 模式切换按钮（模拟 ⇄ 正式） */
@@ -245,36 +199,71 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 650;
-  padding: 4px 11px;
-  border-radius: 999px;
+  padding: 3px 9px;
+  border-radius: 3px;
   cursor: pointer;
   border: 1px solid;
-  transition: transform 80ms ease, box-shadow 120ms ease;
-}
-
-.mode-pill:active {
-  transform: scale(0.96);
+  transition: background 100ms ease;
 }
 
 .mode-pill.is-simulation {
   color: var(--warning);
-  border-color: rgba(255, 159, 10, 0.45);
-  background: rgba(255, 159, 10, 0.1);
+  border-color: rgba(201, 138, 27, 0.5);
+  background: rgba(201, 138, 27, 0.08);
 }
 
 .mode-pill.is-formal {
   color: #fff;
   border-color: transparent;
   background: var(--accent);
-  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 .mode-pill-hint {
   font-weight: 500;
   font-size: 10.5px;
-  opacity: 0.75;
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   底部状态栏（科研工具标配：参数与统计量）
+   -------------------------------------------------------------------------- */
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 26px;
+  padding: 0 14px;
+  flex-shrink: 0;
+  background: var(--statusbar-bg);
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.statusbar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.statusbar-item b {
+  font-weight: 650;
+  color: var(--text);
+  font-family: var(--mono-stack);
+}
+
+.statusbar-item .ok { color: var(--success); }
+.statusbar-item .warn { color: var(--warning); }
+.statusbar-item .live { color: var(--danger); }
+
+.statusbar-spacer {
+  flex: 1;
 }
 
 /* --------------------------------------------------------------------------
@@ -288,8 +277,6 @@ button {
   flex-direction: column;
   padding: 14px 10px 12px;
   background: var(--sidebar-bg);
-  backdrop-filter: saturate(180%) blur(28px);
-  -webkit-backdrop-filter: saturate(180%) blur(28px);
   border-right: 1px solid var(--border);
 }
 
@@ -303,12 +290,11 @@ button {
 .brand-badge {
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: 4px;
   display: grid;
   place-items: center;
   color: #fff;
-  background: linear-gradient(145deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #7a2fff));
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 45%, transparent);
+  background: var(--accent);
 }
 
 .brand-badge span {
@@ -345,7 +331,7 @@ button {
   gap: 11px;
   padding: 9px 10px;
   border: none;
-  border-radius: 9px;
+  border-radius: 4px;
   background: transparent;
   color: var(--text);
   cursor: pointer;
@@ -359,12 +345,13 @@ button {
 
 .nav-item.is-active {
   background: var(--nav-active);
+  color: #ffffff;
 }
 
 .nav-icon {
   width: 30px;
   height: 30px;
-  border-radius: 8px;
+  border-radius: 4px;
   display: grid;
   place-items: center;
   background: var(--input-bg);
@@ -373,9 +360,8 @@ button {
 }
 
 .nav-item.is-active .nav-icon {
-  background: var(--accent);
+  background: rgba(255, 255, 255, 0.18);
   color: #fff;
-  box-shadow: 0 3px 10px color-mix(in srgb, var(--accent) 40%, transparent);
 }
 
 .nav-copy {
@@ -394,6 +380,10 @@ button {
   color: var(--text-2);
 }
 
+.nav-item.is-active .nav-copy small {
+  color: rgba(255, 255, 255, 0.78);
+}
+
 .sidebar-footer {
   margin-top: auto;
 }
@@ -401,7 +391,7 @@ button {
 .mini-status {
   border: 1px solid var(--border);
   background: var(--card-bg);
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 10px 12px;
   display: flex;
   flex-direction: column;
@@ -431,10 +421,8 @@ button {
 
 .card {
   background: var(--card-bg);
-  backdrop-filter: saturate(160%) blur(18px);
-  -webkit-backdrop-filter: saturate(160%) blur(18px);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 5px;
   box-shadow: var(--shadow);
   padding: 16px 18px;
   margin-bottom: 14px;
@@ -477,7 +465,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 7px;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid var(--border-strong);
   background: var(--card-solid);
   color: var(--text);
@@ -507,7 +495,7 @@ button {
   background: var(--accent);
   border-color: transparent;
   color: #fff;
-  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 45%, transparent);
+
 }
 
 .btn-primary:hover {
@@ -541,7 +529,7 @@ button {
 .btn-xs {
   font-size: 11.5px;
   padding: 3px 8px;
-  border-radius: 6px;
+  border-radius: 3px;
 }
 
 /* --------------------------------------------------------------------------
@@ -551,7 +539,7 @@ button {
 .segmented {
   display: inline-flex;
   background: var(--input-bg);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 2px;
   gap: 1px;
 }
@@ -563,7 +551,7 @@ button {
   font-size: 12px;
   font-weight: 600;
   padding: 5px 11px;
-  border-radius: 6px;
+  border-radius: 3px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -574,7 +562,7 @@ button {
 .segmented-option.is-active {
   background: var(--card-solid);
   color: var(--text);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+
 }
 
 .toggle {
@@ -621,7 +609,7 @@ button {
   border: 1px solid var(--border);
   background: var(--card-solid);
   color: var(--text);
-  border-radius: 999px;
+  border-radius: 3px;
   font-size: 12px;
   padding: 4px 11px;
   white-space: nowrap;
@@ -668,10 +656,8 @@ button.chip:active {
 
 .widget-stack {
   background: var(--card-bg);
-  backdrop-filter: saturate(160%) blur(18px);
-  -webkit-backdrop-filter: saturate(160%) blur(18px);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 5px;
   box-shadow: var(--shadow);
   overflow: hidden;
   margin-bottom: 14px;
@@ -790,7 +776,7 @@ button.chip:active {
   gap: 10px;
   min-height: 66px;
   padding: 14px 18px;
-  border-radius: 12px;
+  border-radius: 5px;
   background: var(--canvas-bg);
   border: 1px solid var(--border);
   font-family: var(--font-stack);
@@ -814,7 +800,7 @@ button.chip:active {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-radius: 9px;
+  border-radius: 4px;
   padding: 5px 12px;
   background: var(--accent-soft);
   border: 1px dashed var(--accent);
@@ -853,7 +839,7 @@ button.chip:active {
   gap: 8px;
   margin-top: 10px;
   padding: 8px 12px;
-  border-radius: 9px;
+  border-radius: 4px;
   background: rgba(255, 159, 10, 0.1);
   border: 1px solid rgba(255, 159, 10, 0.35);
   color: var(--text);
@@ -931,7 +917,7 @@ button.chip:active {
   align-items: baseline;
   gap: 12px;
   border: 1px solid var(--border);
-  border-radius: 11px;
+  border-radius: 4px;
   background: var(--canvas-bg);
   padding: 11px 16px;
   cursor: pointer;
@@ -1098,7 +1084,7 @@ button.chip:active {
   height: 11px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 60%, transparent);
+
 }
 
 .large-dash {
@@ -1106,7 +1092,7 @@ button.chip:active {
   height: 11px;
   border-radius: 5px;
   background: var(--warning);
-  box-shadow: 0 0 8px rgba(255, 159, 10, 0.5);
+
 }
 
 .morse-group-letter {
@@ -1146,7 +1132,7 @@ button.chip:active {
 
 .stream-cell {
   height: 26px;
-  border-radius: 6px;
+  border-radius: 3px;
   display: grid;
   place-items: center;
   background: var(--stream-empty);
@@ -1261,7 +1247,7 @@ button.chip:active {
   color: var(--danger);
   background: rgba(255, 69, 58, 0.08);
   border: 1px solid rgba(255, 69, 58, 0.35);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 7px 11px;
 }
 
@@ -1307,7 +1293,7 @@ button.chip:active {
 
 .source-dropzone {
   border: 1.5px dashed var(--border-strong);
-  border-radius: 11px;
+  border-radius: 4px;
   margin-bottom: 10px;
   transition: border-color 120ms ease, background 120ms ease;
 }
@@ -1337,7 +1323,7 @@ button.chip:active {
 .source-icon {
   width: 34px;
   height: 34px;
-  border-radius: 9px;
+  border-radius: 4px;
   display: grid;
   place-items: center;
   background: var(--accent-soft);
@@ -1396,7 +1382,7 @@ button.chip:active {
   border: 1px solid var(--border-strong);
   background: var(--input-bg);
   color: var(--text);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 6px 10px;
   font-size: 12.5px;
   font-family: var(--mono-stack);
@@ -1414,7 +1400,7 @@ button.chip:active {
   border: 1px solid var(--border-strong);
   background: var(--input-bg);
   color: var(--text);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 6px 10px;
   font-size: 12px;
   max-width: 300px;
@@ -1429,7 +1415,7 @@ button.chip:active {
 .waveform-canvas-wrap {
   position: relative;
   height: 240px;
-  border-radius: 12px;
+  border-radius: 5px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--canvas-bg);
@@ -1503,7 +1489,7 @@ button.chip:active {
 
 .window-canvas-wrap {
   height: 250px;
-  border-radius: 12px;
+  border-radius: 5px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--canvas-bg);
@@ -1538,7 +1524,7 @@ button.chip:active {
   border: 1px solid var(--border-strong);
   background: var(--input-bg);
   color: var(--text);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 7px 10px;
   font-size: 13px;
   font-family: var(--mono-stack);
@@ -1579,7 +1565,7 @@ button.chip:active {
   gap: 8px;
   margin-top: 12px;
   padding: 9px 13px;
-  border-radius: 9px;
+  border-radius: 4px;
   font-size: 12.5px;
   background: rgba(255, 159, 10, 0.1);
   border: 1px solid rgba(255, 159, 10, 0.35);
@@ -1703,7 +1689,7 @@ button.chip:active {
 .panel-toggle-icon {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: 4px;
   display: grid;
   place-items: center;
   background: var(--input-bg);
@@ -1754,7 +1740,7 @@ button.chip:active {
 
 .algorithm-facts {
   margin-top: 6px;
-  border-radius: 10px;
+  border-radius: 4px;
   border: 1px solid var(--border);
   background: var(--canvas-bg);
   padding: 4px 14px;

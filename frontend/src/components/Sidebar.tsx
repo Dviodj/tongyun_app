@@ -23,7 +23,7 @@ export function Sidebar() {
         </div>
         <div className="brand-copy">
           <strong>通韵</strong>
-          <span>TongYun BCI</span>
+          <span>TongYun App</span>
         </div>
       </div>
 
