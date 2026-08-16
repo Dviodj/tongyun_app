@@ -34,6 +34,7 @@ import mimetypes
 import os
 import threading
 import time
+from collections import deque
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -515,6 +516,350 @@ class SimulationSource:
             "event_count": len(self.events),
             "duration_s": round(self.trace.shape[1] / 100.0, 2),
         }
+
+
+# --------------------------------------------------------------------------
+# 实时解码流（正式模式）：LSL 设备 / 内置模拟设备
+# --------------------------------------------------------------------------
+
+class MockLiveProducer:
+    """内置模拟设备：按文本循环生成点/划事件与连续波形（无需任何硬件）。"""
+
+    SYMBOL_SAMPLES = 120
+    REST_SAMPLES = 24
+
+    def __init__(self, text: str, seed: int | None = None):
+        self.text = " ".join(str(text).upper().split())
+        if not self.text:
+            self.text = "HELLO WORLD"
+        self.seed = seed if seed is not None else int(time.time() * 1000) % 10_000_000
+        self.rng = np.random.default_rng(self.seed)
+        self.char_index = 0
+        self.symbol_index = 0
+
+    def next_event(self) -> dict | None:
+        char = self.text[self.char_index]
+        if char == " ":
+            self.char_index = (self.char_index + 1) % len(self.text)
+            self.symbol_index = 0
+            return {"code": 4, "label": "space", "confidence": 1.0, "wave_rest": 90}
+        pattern = TEXT_TO_MORSE.get(char)
+        if pattern is None:
+            # 跳过未知字符
+            self.char_index = (self.char_index + 1) % len(self.text)
+            self.symbol_index = 0
+            return self.next_event()
+        if self.symbol_index >= len(pattern):
+            # 当前字母完成：发边界并前进到下一个字符
+            self.char_index = (self.char_index + 1) % len(self.text)
+            self.symbol_index = 0
+            return {"code": 3, "label": "boundary", "confidence": 1.0, "wave_rest": 60}
+
+        symbol = pattern[self.symbol_index]
+        self.symbol_index += 1
+        confidence = float(np.clip(0.80 + self.rng.normal(0.0, 0.07), 0.55, 0.985))
+        if self.rng.random() < 0.05:  # 偶发低置信演示门控
+            confidence = float(self.rng.uniform(0.45, 0.60))
+        return {
+            "code": 1 if symbol == "." else 2,
+            "label": "dot" if symbol == "." else "dash",
+            "confidence": round(confidence, 4),
+            "wave_rest": self.REST_SAMPLES,
+            "wave_epoch": simulate_epoch(
+                symbol,
+                self.seed + self.char_index * 17 + self.symbol_index,
+                samples=self.SYMBOL_SAMPLES,
+            ),
+        }
+
+
+def resolve_lsl_streams(stype: str = "EEG", timeout: float = 1.5):
+    """兼容新旧版 pylsl 的 resolve_streams 签名。"""
+    from pylsl import resolve_streams
+
+    try:
+        return resolve_streams("type", stype, timeout)
+    except TypeError:
+        # 旧版 liblsl-python：resolve_streams(timeout)
+        return resolve_streams(timeout)
+
+
+class LSLProducer:
+    """LSL 设备：解析 EEG 流，切出滑动时间窗 epoch 后交给模型推理。"""
+
+    def __init__(self, decoder, fallback, name: str | None = None, stype: str = "EEG",
+                 timeout: float = 3.0):
+        try:
+            from pylsl import StreamInlet
+        except ImportError as exc:
+            raise RuntimeError("未安装 pylsl：请 pip install pylsl 后重试") from exc
+        self.decoder = decoder
+        self.fallback = fallback
+        streams = resolve_lsl_streams(stype, timeout)
+        if not streams:
+            raise RuntimeError(f"未发现 {stype} 类型的 LSL 流，请确认设备已开始推流")
+        chosen = None
+        if name:
+            for stream in streams:
+                if stream.name() == name:
+                    chosen = stream
+                    break
+            if chosen is None:
+                raise RuntimeError(f"未找到名为「{name}」的 LSL 流")
+        else:
+            chosen = streams[0]
+        self.inlet = StreamInlet(chosen)
+        self.stream_name = chosen.name()
+        self.stream_type = chosen.type()
+        self.sfreq = float(chosen.nominal_srate() or 0)
+        self.n_channels = int(chosen.channel_count())
+        self.channel_labels: list[str] = []
+        try:
+            import xml.etree.ElementTree as ET
+
+            root = ET.fromstring(chosen.as_xml())
+            for index, channel in enumerate(root.iter("channel")):
+                label = channel.findtext("label") or f"ch{index + 1}"
+                self.channel_labels.append(label)
+        except Exception:
+            self.channel_labels = [f"ch{i + 1}" for i in range(self.n_channels)]
+        # 优先选择 C3/Cz/C4，否则取前三个通道
+        picks: list[int] = []
+        for want in ("C3", "Cz", "C4"):
+            for index, label in enumerate(self.channel_labels):
+                if str(label).upper() == want and index not in picks:
+                    picks.append(index)
+                    break
+        if len(picks) < 3:
+            picks = list(range(min(3, self.n_channels)))
+        self.picks = picks[:3]
+        self._buffer: list = []
+        self._sample_count = 0
+
+    @property
+    def epoch_size(self) -> int:
+        if self.sfreq and self.sfreq > 0:
+            return max(60, int(round(self.sfreq * 3.5)))
+        return EXPECTED_SAMPLES
+
+    def next_event(self) -> dict | None:
+        deadline = time.time() + 8.0
+        while len(self._buffer) < self.epoch_size:
+            chunk, _ = self.inlet.pull_chunk(timeout=0.2)
+            if chunk:
+                self._buffer.extend(chunk)
+                self._sample_count += len(chunk)
+            elif time.time() > deadline:
+                return None
+        epoch = np.asarray(self._buffer[: self.epoch_size], dtype=np.float64).T
+        self._buffer = self._buffer[self.epoch_size :]
+        selected = epoch[self.picks]
+        selected = resample_epoch(selected, EXPECTED_SAMPLES)
+
+        try:
+            if self.decoder.ready:
+                proba = self.decoder.predict_proba(selected)
+            elif self.fallback.trained:
+                proba = self.fallback.predict_proba(selected)
+            else:
+                return None
+        except Exception:
+            return None
+        result = _response_from_proba(np.asarray(proba, dtype=np.float64), self.decoder.threshold)
+        if not result["accepted"]:
+            return {
+                "code": 0,
+                "label": "rejected",
+                "confidence": result["confidence"],
+                "wave_rest": 0,
+                "wave_epoch": selected,
+            }
+        symbol = result["morse"]
+        return {
+            "code": 1 if symbol == "." else 2,
+            "label": "dot" if symbol == "." else "dash",
+            "confidence": result["confidence"],
+            "wave_rest": 0,
+            "wave_epoch": selected,
+        }
+
+
+def list_lsl_streams(stype: str = "EEG", timeout: float = 1.5) -> list[dict]:
+    """列出当前可用的 LSL 流。"""
+    try:
+        import pylsl  # noqa: F401
+    except ImportError:
+        raise RuntimeError("未安装 pylsl：请 pip install pylsl 后重试")
+    streams = resolve_lsl_streams(stype, timeout)
+    result = []
+    for stream in streams:
+        try:
+            sfreq = float(stream.nominal_srate() or 0)
+        except Exception:
+            sfreq = 0.0
+        try:
+            uid = stream.uid()
+        except Exception:
+            uid = ""
+        result.append({
+            "name": stream.name(),
+            "type": stream.type(),
+            "channels": int(stream.channel_count()),
+            "sfreq": sfreq,
+            "uid": uid,
+        })
+    return result
+
+
+class LiveStream:
+    """实时解码管理器：生产者线程 -> 事件/波形缓冲 -> 前端轮询消费。"""
+
+    WAVE_MAX = 2400
+
+    def __init__(self, decoder: HybridFBCDecoder, fallback: CSPLDAFallback):
+        self.decoder = decoder
+        self.fallback = fallback
+        self.lock = threading.Lock()
+        self.thread: threading.Thread | None = None
+        self.running = False
+        self.source: str | None = None
+        self.config: dict = {}
+        self.error: str | None = None
+        self.started_at: str | None = None
+        self.events: deque = deque(maxlen=4000)
+        self.next_index = 0
+        self.wave: deque = deque(maxlen=self.WAVE_MAX)
+        self.total_samples = 0
+
+    def start(self, config: dict) -> dict:
+        if self.running:
+            raise ValueError("实时解码已在运行，请先停止")
+        source = str(config.get("source", "mock"))
+        if source == "mock":
+            text = str(config.get("text", "HELLO WORLD")).strip() or "HELLO WORLD"
+            self.producer = MockLiveProducer(text)
+        elif source == "lsl":
+            self.producer = LSLProducer(
+                self.decoder, self.fallback,
+                config.get("lsl_name"), str(config.get("lsl_type", "EEG")),
+            )
+        else:
+            raise ValueError(f"不支持的设备源：{source}")
+        with self.lock:
+            self.source = source
+            self.config = config
+            self.running = True
+            self.error = None
+            self.started_at = datetime.now(timezone.utc).isoformat()
+            self.events.clear()
+            self.next_index = 0
+            self.wave.clear()
+            self.total_samples = 0
+        self.thread = threading.Thread(target=self._run, daemon=True)
+        self.thread.start()
+        return self.status()
+
+    def stop(self) -> dict:
+        self.running = False
+        if self.thread:
+            self.thread.join(timeout=4)
+            self.thread = None
+        return self.status()
+
+    def status(self) -> dict:
+        with self.lock:
+            events = list(self.events)
+            codes = [event["code"] for event in events if event.get("code") in (1, 2, 3, 4)]
+            decoded = decode_morse_events(codes)
+            return {
+                "running": self.running,
+                "source": self.source,
+                "started_at": self.started_at,
+                "event_count": len(events),
+                "duration_s": round(self.total_samples / 100.0, 1),
+                "decoded_text": decoded["decoded_text"],
+                "unknown_sequences": decoded["unknown_sequences"],
+                "error": self.error,
+                "config": self.config,
+            }
+
+    def events_since(self, after: int) -> dict:
+        with self.lock:
+            items = [event for event in self.events if event["index"] > after]
+        return {
+            "events": items,
+            "next": items[-1]["index"] if items else after,
+        }
+
+    def waveform(self, max_points: int = 2000) -> dict:
+        with self.lock:
+            if not self.wave:
+                return {
+                    "traces": [[], [], []],
+                    "events": [],
+                    "sample_rate": 100,
+                    "stride": 1,
+                    "total_samples": self.total_samples,
+                }
+            wave = np.asarray(list(self.wave), dtype=np.float32).T
+            wave_start = self.total_samples - wave.shape[1]
+            events = [event for event in self.events][-40:]
+        stride = max(1, wave.shape[1] // max_points)
+        decimated = wave[:, ::stride]
+        mapped = []
+        for event in events:
+            sample = int(event.get("sample", 0))
+            if sample < wave_start:
+                continue
+            item = {key: value for key, value in event.items() if key != "wave_epoch"}
+            item["index"] = (sample - wave_start) // stride
+            mapped.append(item)
+        return {
+            "traces": decimated.tolist(),
+            "events": mapped,
+            "sample_rate": 100,
+            "stride": stride,
+            "total_samples": self.total_samples,
+        }
+
+    def _append_wave(self, rest: int, epoch: np.ndarray | None) -> None:
+        with self.lock:
+            if rest > 0:
+                for _ in range(rest):
+                    self.wave.append([0.0, 0.0, 0.0])
+                self.total_samples += rest
+            if epoch is not None:
+                for column in epoch.T:
+                    self.wave.append([float(column[0]), float(column[1]), float(column[2])])
+                self.total_samples += epoch.shape[1]
+
+    def _run(self) -> None:
+        interval = float(self.config.get("interval", 0.9))
+        while self.running:
+            try:
+                event = self.producer.next_event()
+            except Exception as exc:
+                self.error = f"设备流错误：{exc}"
+                time.sleep(1.0)
+                continue
+            if event is None:
+                time.sleep(0.05)
+                continue
+            # 波形数据入缓冲后从事件中剥离，保证事件可 JSON 序列化
+            wave_rest = int(event.pop("wave_rest", 0) or 0)
+            wave_epoch = event.pop("wave_epoch", None)
+            with self.lock:
+                self.next_index += 1
+                event["index"] = self.next_index
+                event["time_s"] = round(self.total_samples / 100.0, 2)
+                event["sample"] = self.total_samples
+                event["source"] = self.source
+                self.events.append(event)
+            self._append_wave(wave_rest, wave_epoch)
+            if self.source == "mock":
+                time.sleep(interval)
+            elif event.get("code") == 0:
+                time.sleep(0.3)
 
 
 # --------------------------------------------------------------------------
@@ -1050,6 +1395,20 @@ class AppHandler(BaseHTTPRequestHandler):
                 max_points = int(query.get("max_points", "6000"))
                 self._send_json(200, self.app.source_store.get_waveform(query.get("id", ""), max_points))
                 return
+            if path == "/api/live/status":
+                self._send_json(200, self.app.live.status())
+                return
+            if path == "/api/live/events":
+                after = int(query.get("after", "0"))
+                self._send_json(200, self.app.live.events_since(after))
+                return
+            if path == "/api/live/waveform":
+                max_points = int(query.get("max_points", "2000"))
+                self._send_json(200, self.app.live.waveform(max_points))
+                return
+            if path == "/api/live/lsl/streams":
+                self._send_json(200, {"streams": list_lsl_streams()})
+                return
             if path == "/api/data/epochs":
                 start = max(0, int(query.get("start", "0")))
                 count = min(200, max(1, int(query.get("count", "64"))))
@@ -1080,6 +1439,12 @@ class AppHandler(BaseHTTPRequestHandler):
                 return
             if path == "/api/data/upload":
                 self._upload_source()
+                return
+            if path == "/api/live/start":
+                self._live_start()
+                return
+            if path == "/api/live/stop":
+                self._live_stop()
                 return
             if path == "/api/fallback/train":
                 self._train_fallback()
@@ -1163,6 +1528,15 @@ class AppHandler(BaseHTTPRequestHandler):
                 remaining -= len(chunk)
         self._send_json(201, self.app.source_store.inspect_upload(source_id, file_path))
 
+    # ---- 实时解码 ----
+
+    def _live_start(self) -> None:
+        payload = self._read_json()
+        self._send_json(201, self.app.live.start(payload))
+
+    def _live_stop(self) -> None:
+        self._send_json(200, self.app.live.stop())
+
     # ---- 回退分类器训练 ----
 
     def _train_fallback(self) -> None:
@@ -1238,6 +1612,7 @@ class TongYunServer(ThreadingHTTPServer):
     def __init__(self, address, handler, decoder, static_root, source_root, fallback, window):
         super().__init__(address, handler)
         source_store = SourceStore(source_root, decoder.repo_root, decoder, fallback, window)
+        live = LiveStream(decoder, fallback)
         self.app = type(
             "AppState",
             (),
@@ -1247,6 +1622,7 @@ class TongYunServer(ThreadingHTTPServer):
                 "window": window,
                 "static_root": static_root.resolve(),
                 "source_store": source_store,
+                "live": live,
             },
         )()
 

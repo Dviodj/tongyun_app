@@ -2,8 +2,9 @@
 import { useState } from "react";
 import {
   ArrowCounterClockwise,
-  Brain,
+  ChatsCircle,
   Check,
+  Gauge,
   Layout,
   Moon,
   Palette,
@@ -19,9 +20,9 @@ const PANEL_ITEMS: Array<{
   key: keyof PanelVisibility;
   label: string;
   hint: string;
-  icon: typeof Brain;
+  icon: typeof ChatsCircle;
 }> = [
-  { key: "sentence", label: "识别句子", hint: "主显示区：解码句子与纠错建议", icon: Brain },
+  { key: "sentence", label: "识别句子", hint: "主显示区：解码句子与纠错建议", icon: ChatsCircle },
   { key: "word", label: "下个单词预测", hint: "最可能的下一个单词", icon: TextT },
   { key: "morse", label: "莫尔斯码", hint: "点划流、当前字母与手动输入", icon: Waveform },
   { key: "waveform", label: "源文件波形", hint: "三通道波形、事件标记与回放", icon: Layout },
@@ -137,7 +138,7 @@ export function SettingsView() {
       </Card>
 
       <Card className="settings-card">
-        <SectionHeader title="解码" subtitle="置信门控与算法状态" aside={<Brain size={20} weight="duotone" />} />
+        <SectionHeader title="解码" subtitle="置信门控与算法状态" aside={<Gauge size={20} weight="duotone" />} />
         <div className="settings-row">
           <span className="settings-label">置信门控阈值</span>
           <div className="threshold-control">

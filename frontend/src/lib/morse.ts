@@ -50,7 +50,8 @@ export function buildMorseSteps(decodedMorse: string): MorseStep[] {
     );
 }
 
-/** 事件码 -> 符号；后端约定 1=点、2=划、3=字母边界、4=单词边界。 */
+/** 事件码 -> 符号；后端约定 1=点、2=划、3=字母边界、4=单词边界、0=低置信拒识。 */
+export const EVENT_REJECTED = 0;
 export const EVENT_DOT = 1;
 export const EVENT_DASH = 2;
 export const EVENT_LETTER_BOUNDARY = 3;

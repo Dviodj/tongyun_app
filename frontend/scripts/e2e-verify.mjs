@@ -64,6 +64,43 @@ if (wordCount) {
   check("点击采用预测单词写入句子", afterAdopt.includes(wordText), afterAdopt);
 }
 
+// ---- 3.5 模式切换 + 设备接入 ----
+const modePill = page.locator(".mode-pill");
+check("模式切换按钮存在", (await modePill.count()) === 1);
+check("默认模拟模式", (await modePill.innerText()).includes("模拟模式"));
+check("大脑图标已移除", (await page.locator(".brand-badge svg").count()) === 0);
+await modePill.click();
+await page.waitForTimeout(300);
+check("点击切换到正式模式", (await modePill.innerText()).includes("正式模式"));
+check("正式模式显示设备面板", await page.locator(".device-widget").isVisible());
+check("正式模式隐藏模拟生成行", (await page.locator(".sim-row").count()) === 0);
+// 连接内置模拟设备
+await page.locator(".device-widget .btn-primary", { hasText: "连接并开始" }).click();
+await page.waitForTimeout(3500);
+const liveCells = await page.locator(".stream-cell.is-accepted").count();
+check("实时解码事件流入点划流", liveCells > 0, `cells=${liveCells}`);
+check("实时解码状态芯片显示", (await page.locator(".chip-live").count()) === 1);
+const liveDecoded = await page.locator(".chip-live").innerText();
+check("实时解码文本推进", /解码中/.test(liveDecoded) && /事件/.test(liveDecoded), liveDecoded);
+// 停止
+await page.locator(".device-widget .btn", { hasText: "停止解码" }).click();
+await page.waitForTimeout(400);
+check("停止实时解码", (await page.locator(".chip-live").count()) === 0);
+// LSL 扫描（无流时安全提示）
+await page.locator(".device-widget .segmented-option", { hasText: "LSL 设备" }).click();
+await page.waitForTimeout(200);
+await page.locator(".device-widget .btn", { hasText: "扫描设备流" }).click();
+await page.waitForTimeout(3000);
+const lslArea = await page.locator(".device-widget").innerText();
+check("LSL 扫描安全返回", lslArea.length > 0, "no crash");
+// 切回模拟模式
+await page.locator(".device-widget .segmented-option", { hasText: "模拟设备" }).click();
+await page.waitForTimeout(200);
+await modePill.click();
+await page.waitForTimeout(300);
+check("切回模拟模式", (await modePill.innerText()).includes("模拟模式"));
+check("模拟生成行恢复", (await page.locator(".sim-row").count()) === 1);
+
 // ---- 4. 设置页 ----
 await page.goto(BASE + "#settings", { waitUntil: "networkidle" });
 await page.waitForTimeout(500);

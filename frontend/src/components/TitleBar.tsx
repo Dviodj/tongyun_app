@@ -1,10 +1,13 @@
-/** macOS 风格标题栏：红黄绿交通灯 + 居中标题 + 右侧状态。桌面版中交通灯可点击。 */
-import { Brain, WifiHigh, WifiSlash } from "@phosphor-icons/react";
+/** macOS 风格标题栏：红黄绿交通灯 + 居中标题 + 右侧可点击的模式切换。 */
+import { ArrowsLeftRight, WifiHigh, WifiSlash } from "@phosphor-icons/react";
 import { useAppStore } from "../state/store";
 
 export function TitleBar() {
   const health = useAppStore((state) => state.algorithmHealth);
   const status = useAppStore((state) => state.status);
+  const mode = useAppStore((state) => state.mode);
+  const toggleMode = useAppStore((state) => state.toggleMode);
+  const live = useAppStore((state) => state.live);
   const desktop = window.tongyunDesktop;
   const controls = desktop?.controls;
 
@@ -28,6 +31,14 @@ export function TitleBar() {
         }
       : {};
 
+  const algorithmLabel = health.loading
+    ? "连接算法…"
+    : health.modelLoaded
+      ? "Hybrid FBC 已就绪"
+      : health.fallbackTrained
+        ? "CSP+LDA 回退"
+        : "未载入权重";
+
   return (
     <header className="titlebar">
       <div className={`traffic-lights ${desktop ? "is-functional" : ""}`} aria-hidden={!desktop}>
@@ -39,23 +50,36 @@ export function TitleBar() {
         通韵 <span className="titlebar-sub">TongYun · 脑电莫尔斯输入</span>
       </div>
       <div className="titlebar-status">
-        <span className={`status-pill ${health.modelLoaded ? "is-ready" : health.fallbackTrained ? "is-fallback" : "is-sim"}`}>
-          {status === "playing" ? <WifiHigh size={13} weight="bold" /> : <Brain size={13} weight="bold" />}
-          {health.loading
-            ? "连接算法…"
-            : health.modelLoaded
-              ? "Hybrid FBC 已就绪"
-              : health.fallbackTrained
-                ? "CSP+LDA 回退模式"
-                : "模拟模式"}
+        <button
+          type="button"
+          className={`mode-pill ${mode === "formal" ? "is-formal" : "is-simulation"}`}
+          onClick={toggleMode}
+          title={mode === "simulation" ? "点击切换到正式模式（文件解码 / 实时设备接入）" : "点击切换到模拟模式（演示体验）"}
+          aria-pressed={mode === "formal"}
+        >
+          <ArrowsLeftRight size={13} weight="bold" />
+          {mode === "simulation" ? "模拟模式" : "正式模式"}
+          <span className="mode-pill-hint">{mode === "simulation" ? "点击切换" : ""}</span>
+        </button>
+        <span
+          className={`status-pill ${health.modelLoaded ? "is-ready" : health.fallbackTrained ? "is-fallback" : "is-sim"}`}
+          title={health.error ?? algorithmLabel}
+        >
+          {algorithmLabel}
         </span>
-        {status === "playing" ? (
+        {live.running && (
+          <span className="status-pill is-live">
+            <WifiHigh size={13} weight="bold" /> 实时解码中
+          </span>
+        )}
+        {!live.running && status === "playing" && (
           <span className="status-pill is-live">▶ 播放中</span>
-        ) : status === "paused" ? (
+        )}
+        {status === "paused" && (
           <span className="status-pill is-live">
             <WifiSlash size={13} weight="bold" /> 已暂停
           </span>
-        ) : null}
+        )}
       </div>
     </header>
   );

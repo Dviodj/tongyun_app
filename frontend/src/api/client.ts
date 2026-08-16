@@ -203,3 +203,83 @@ export function decodeEvents(events: number[]): Promise<DecodedMorse> {
     body: JSON.stringify({ events }),
   });
 }
+
+// ---------------------------------------------------------------------------
+// 实时解码（正式模式设备接入）
+// ---------------------------------------------------------------------------
+
+export interface LiveStatus {
+  running: boolean;
+  source: string | null;
+  started_at: string | null;
+  event_count: number;
+  duration_s: number;
+  decoded_text: string;
+  unknown_sequences: string[];
+  error: string | null;
+  config: Record<string, unknown>;
+}
+
+export interface LiveEvent {
+  index: number;
+  code: number;
+  label: string | null;
+  confidence: number | null;
+  time_s: number;
+  sample: number;
+  source: string;
+}
+
+export interface LiveWaveform {
+  traces: number[][];
+  events: Array<LiveEvent & { index: number }>;
+  sample_rate: number;
+  stride: number;
+  total_samples: number;
+}
+
+export interface LslStreamInfo {
+  name: string;
+  type: string;
+  channels: number;
+  sfreq: number;
+  uid: string;
+}
+
+export function liveStart(config: {
+  source: "mock" | "lsl";
+  text?: string;
+  interval?: number;
+  lsl_name?: string;
+  lsl_type?: string;
+}): Promise<LiveStatus> {
+  return request<LiveStatus>("/api/live/start", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(config),
+  });
+}
+
+export function liveStop(): Promise<LiveStatus> {
+  return request<LiveStatus>("/api/live/stop", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({}),
+  });
+}
+
+export function liveStatus(): Promise<LiveStatus> {
+  return request<LiveStatus>("/api/live/status");
+}
+
+export function liveEvents(after: number): Promise<{ events: LiveEvent[]; next: number }> {
+  return request(`/api/live/events?after=${after}`);
+}
+
+export function liveWaveform(maxPoints = 2000): Promise<LiveWaveform> {
+  return request<LiveWaveform>(`/api/live/waveform?max_points=${maxPoints}`);
+}
+
+export function lslStreams(): Promise<{ streams: LslStreamInfo[] }> {
+  return request("/api/live/lsl/streams");
+}

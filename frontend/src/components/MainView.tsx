@@ -6,16 +6,19 @@ import { SentencePanel } from "./SentencePanel";
 import { PredictionPanel } from "./PredictionPanel";
 import { MorsePanel } from "./MorsePanel";
 import { WaveformPanel } from "./WaveformPanel";
+import { DevicePanel } from "./DevicePanel";
 
 export function MainView() {
   const panels = useAppStore((state) => state.panels);
   const layout = useAppStore((state) => state.layout);
   const status = useAppStore((state) => state.status);
+  const mode = useAppStore((state) => state.mode);
   const confirmTop = useAppStore((state) => state.confirmTop);
   const cancelLast = useAppStore((state) => state.cancelLast);
   const togglePause = useAppStore((state) => state.togglePause);
   const clearAll = useAppStore((state) => state.clearAll);
 
+  const formal = mode === "formal";
   const bottomVisible = panels.morse || panels.waveform;
 
   return (
@@ -50,6 +53,12 @@ export function MainView() {
           </Button>
         </div>
       </div>
+
+      {formal && (
+        <div className="widget-stack">
+          <DevicePanel />
+        </div>
+      )}
 
       {bottomVisible && layout === "split" ? (
         <div className="main-bottom is-split">

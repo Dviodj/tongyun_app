@@ -6,6 +6,7 @@ import {
   EVENT_DOT,
   EVENT_DASH,
   EVENT_LETTER_BOUNDARY,
+  EVENT_REJECTED,
   EVENT_WORD_BOUNDARY,
 } from "../lib/morse";
 import {
@@ -20,6 +21,7 @@ export type View = "main" | "window" | "settings";
 export type ThemeMode = "light" | "dark" | "system";
 export type LayoutMode = "stacked" | "split";
 export type SessionStatus = "idle" | "playing" | "paused";
+export type AppMode = "simulation" | "formal";
 
 export interface PanelVisibility {
   sentence: boolean;
@@ -31,13 +33,15 @@ export interface PanelVisibility {
 export interface MorseEventItem {
   id: number;
   symbol: string;
-  source: "algorithm" | "file" | "simulation" | "manual";
+  source: "algorithm" | "file" | "simulation" | "manual" | "live";
   confidence: number | null;
   accepted: boolean;
 }
 
 export interface SessionSlice {
   status: SessionStatus;
+  mode: AppMode;
+  live: { running: boolean; source: string | null; error: string | null; eventCount: number; decodedText: string };
   sentenceText: string;
   morseGroup: string[];
   morseHistory: MorseEventItem[];
@@ -53,6 +57,9 @@ export interface SessionSlice {
   algorithmHealth: { loading: boolean; modelLoaded: boolean; fallbackTrained: boolean; error: string | null };
 
   setStatus: (status: SessionStatus) => void;
+  setMode: (mode: AppMode) => void;
+  toggleMode: () => void;
+  setLive: (live: Partial<SessionSlice["live"]>) => void;
   setSource: (source: SourceMeta | null) => void;
   setWindow: (window: WindowConfig) => void;
   setThreshold: (threshold: number) => void;
@@ -125,6 +132,8 @@ export const useAppStore = create<AppState>()(
     (set, get) => ({
       // ---- 会话 ----
       status: "idle",
+      mode: "simulation",
+      live: { running: false, source: null, error: null, eventCount: 0, decodedText: "" },
       sentenceText: "",
       morseGroup: [],
       morseHistory: [],
@@ -140,6 +149,9 @@ export const useAppStore = create<AppState>()(
       algorithmHealth: { loading: true, modelLoaded: false, fallbackTrained: false, error: null },
 
       setStatus: (status) => set({ status }),
+      setMode: (mode) => set({ mode }),
+      toggleMode: () => set({ mode: get().mode === "simulation" ? "formal" : "simulation" }),
+      setLive: (live) => set({ live: { ...get().live, ...live } }),
       setSource: (source) => set({ source, status: "idle" }),
       setWindow: (window) => set({ window }),
       setThreshold: (threshold) => set({ threshold }),
@@ -164,6 +176,23 @@ export const useAppStore = create<AppState>()(
               },
             ],
             lastRejection: null,
+          });
+        } else if (code === EVENT_REJECTED) {
+          set({
+            lastRejection: {
+              confidence: meta.confidence ?? 0,
+              threshold: state.threshold,
+            },
+            morseHistory: [
+              ...state.morseHistory.slice(-79),
+              {
+                id: (eventId += 1),
+                symbol: "?",
+                source,
+                confidence: meta.confidence ?? null,
+                accepted: false,
+              },
+            ],
           });
         } else if (code === EVENT_LETTER_BOUNDARY) {
           // 空点划组忽略（事件流文件可能以边界标记开头）
@@ -357,6 +386,7 @@ export const useAppStore = create<AppState>()(
         accent: state.accent,
         layout: state.layout,
         panels: state.panels,
+        mode: state.mode,
       }),
     },
   ),

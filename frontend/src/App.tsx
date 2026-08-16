@@ -17,11 +17,15 @@ export function getHashParams(): URLSearchParams {
   return new URLSearchParams(query);
 }
 
+/** 启动瞬间的参数快照：视图同步会重写 hash，之后一律读快照。 */
+export const BOOT_PARAMS = getHashParams();
+
 export function App() {
   const view = useAppStore((state) => state.view);
   const setView = useAppStore((state) => state.setView);
   const theme = useAppStore((state) => state.theme);
   const setTheme = useAppStore((state) => state.setTheme);
+  const setMode = useAppStore((state) => state.setMode);
   const accent = useAppStore((state) => state.accent);
   const setHealth = useAppStore((state) => state.setHealth);
   const setWindow = useAppStore((state) => state.setWindow);
@@ -42,14 +46,17 @@ export function App() {
     return () => window.removeEventListener("hashchange", applyHash);
   }, [setView]);
 
-  // URL 主题参数：?theme=dark / light / system（便于分享与截图）
+  // URL 主题/模式参数：?theme=dark&mode=formal（便于分享与截图）
   useEffect(() => {
-    const params = getHashParams();
-    const themeParam = params.get("theme");
+    const themeParam = BOOT_PARAMS.get("theme");
     if (themeParam === "dark" || themeParam === "light" || themeParam === "system") {
       setTheme(themeParam);
     }
-  }, [setTheme]);
+    const modeParam = BOOT_PARAMS.get("mode");
+    if (modeParam === "formal" || modeParam === "simulation") {
+      setMode(modeParam);
+    }
+  }, [setTheme, setMode]);
 
   useEffect(() => {
     window.history.replaceState(null, "", `#${view}`);

@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { Backspace, Minus } from "@phosphor-icons/react";
 import { useAppStore } from "../state/store";
-import { decodeMorse } from "../lib/morse";
+import { decodeMorse, EVENT_WORD_BOUNDARY } from "../lib/morse";
 import { Button } from "./ui";
 
 export function MorsePanel() {
@@ -11,6 +11,7 @@ export function MorsePanel() {
   const addManualSymbol = useAppStore((state) => state.addManualSymbol);
   const cancelLast = useAppStore((state) => state.cancelLast);
   const confirmTop = useAppStore((state) => state.confirmTop);
+  const handleEvent = useAppStore((state) => state.handleEvent);
 
   // 键盘输入：. 或 ← 为点，- 或 → 为划，Enter 确认，Backspace 撤销
   useEffect(() => {
@@ -66,6 +67,13 @@ export function MorsePanel() {
           <Button variant="quiet" onClick={() => addManualSymbol("-")} title="输入划 (键盘 - 或 →)">
             <Minus size={15} weight="bold" /> 划
           </Button>
+          <Button
+            variant="quiet"
+            onClick={() => handleEvent(EVENT_WORD_BOUNDARY, { source: "manual", confidence: 1 })}
+            title="插入单词空格"
+          >
+            空格
+          </Button>
           <Button variant="quiet" onClick={cancelLast} title="撤销 (键盘 Backspace)">
             <Backspace size={15} /> 撤销
           </Button>
@@ -89,7 +97,13 @@ export function MorsePanel() {
                     : undefined
                 }
               >
-                {item ? (item.symbol === "." ? <i className="dot-symbol" /> : <i className="dash-symbol" />) : null}
+                {item
+                  ? item.symbol === "."
+                    ? <i className="dot-symbol" />
+                    : item.symbol === "-"
+                      ? <i className="dash-symbol" />
+                      : <span className="reject-symbol">✕</span>
+                  : null}
               </span>
             ),
           );

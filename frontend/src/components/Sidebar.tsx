@@ -1,5 +1,5 @@
 /** 左侧控制栏：主页面 / 时间窗 / 设置 + 底部算法状态。 */
-import { Brain, GearSix, House, Waveform } from "@phosphor-icons/react";
+import { GearSix, House, Waveform } from "@phosphor-icons/react";
 import { useAppStore, type View } from "../state/store";
 
 const NAV_ITEMS: Array<{ view: View; label: string; hint: string; icon: typeof House }> = [
@@ -19,7 +19,7 @@ export function Sidebar() {
     <aside className="sidebar">
       <div className="sidebar-brand">
         <div className="brand-badge">
-          <Brain size={20} weight="duotone" />
+          <span>通</span>
         </div>
         <div className="brand-copy">
           <strong>通韵</strong>

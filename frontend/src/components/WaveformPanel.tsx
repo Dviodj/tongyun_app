@@ -1,21 +1,24 @@
-/** 源文件波形面板：三通道 Canvas 波形 + 播放引擎 + 文件加载/拖拽。 */
+/** 源文件波形面板：三通道 Canvas 波形 + 播放引擎 + 文件加载/拖拽 + 实时解码显示。 */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  Brain,
   FileArrowUp,
+  Lightning,
   Pause,
   Play,
   Sparkle,
   Stop,
+  Waveform,
 } from "@phosphor-icons/react";
 import {
   getWaveform,
   getEpochs,
   listSources,
+  liveWaveform,
   predictEpoch,
   startSimulation,
   trainFallback,
   uploadSource,
+  type LiveWaveform,
   type SourceMeta,
   type WaveformData,
 } from "../api/client";
@@ -24,7 +27,7 @@ import {
   EVENT_WORD_BOUNDARY,
 } from "../lib/morse";
 import { useAppStore } from "../state/store";
-import { getHashParams } from "../App";
+import { BOOT_PARAMS } from "../App";
 import { Button, Chip, Segmented } from "./ui";
 
 const CHANNEL_COLORS = ["#ff453a", "#30d158", "#0a84ff"];
@@ -49,11 +52,16 @@ export function WaveformPanel() {
   const threshold = useAppStore((state) => state.threshold);
   const setHealth = useAppStore((state) => state.setHealth);
   const algorithmHealth = useAppStore((state) => state.algorithmHealth);
+  const mode = useAppStore((state) => state.mode);
+  const liveRunning = useAppStore((state) => state.live.running);
+  const windowConfig = useAppStore((state) => state.window);
+  const formal = mode === "formal";
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const clearAllRef = useRef<() => void>(() => {});
   clearAllRef.current = clearAll;
   const [waveform, setWaveform] = useState<WaveformData | null>(null);
+  const [liveWave, setLiveWave] = useState<LiveWaveform | null>(null);
   const [speed, setSpeed] = useState<"0.5" | "1" | "2">("1");
   const [uploading, setUploading] = useState(false);
   const [dragging, setDragging] = useState(false);
@@ -99,6 +107,30 @@ export function WaveformPanel() {
       playheadRef.current = 0;
     }
   }, [source?.id, loadWaveform]);
+
+  // 实时解码：轮询设备波形缓冲
+  useEffect(() => {
+    if (!liveRunning) {
+      setLiveWave(null);
+      return undefined;
+    }
+    let active = true;
+    let timer: number;
+    const poll = async () => {
+      try {
+        const data = await liveWaveform(2000);
+        if (active) setLiveWave(data);
+      } catch {
+        /* 忽略瞬时错误 */
+      }
+      if (active) timer = window.setTimeout(poll, 500);
+    };
+    void poll();
+    return () => {
+      active = false;
+      window.clearTimeout(timer);
+    };
+  }, [liveRunning]);
 
   const fetchEpoch = useCallback(async (epochIndex: number): Promise<number[][] | null> => {
     if (!source?.id) return null;
@@ -315,19 +347,175 @@ export function WaveformPanel() {
     ctx.fill();
   }, [waveform, events]);
 
+  // 实时解码波形：滚动缓冲 + 解码窗口着色 + 事件标记 + 最右播放头
+  const drawLiveCanvas = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !liveWave) return;
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+    }
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const w = rect.width;
+    const h = rect.height;
+    const theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    const bg = theme === "dark" ? "#1c1c1e" : "#ffffff";
+    const grid = theme === "dark" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.06)";
+    const laneH = h / 3;
+
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, w, h);
+
+    const displayLen = liveWave.traces[0]?.length ?? 0;
+    if (displayLen === 0) {
+      ctx.fillStyle = theme === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
+      ctx.font = "13px -apple-system, 'SF Pro Text', 'Segoe UI Variable', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("等待设备数据…", w / 2, h / 2);
+      ctx.textAlign = "start";
+      return;
+    }
+
+    let maxAbs = 0;
+    for (const trace of liveWave.traces) {
+      for (let i = 0; i < trace.length; i += 4) {
+        const value = Math.abs(trace[i]);
+        if (value > maxAbs) maxAbs = value;
+      }
+    }
+    maxAbs = maxAbs || 1e-6;
+    const scale = (laneH * 0.42) / maxAbs;
+
+    ctx.strokeStyle = grid;
+    ctx.lineWidth = 1;
+    for (let x = 0; x <= w; x += w / 10) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, h);
+      ctx.stroke();
+    }
+    for (let lane = 0; lane <= 3; lane += 1) {
+      ctx.beginPath();
+      ctx.moveTo(0, lane * laneH);
+      ctx.lineTo(w, lane * laneH);
+      ctx.stroke();
+    }
+
+    ctx.font = "600 11px -apple-system, 'SF Pro Text', 'Segoe UI Variable', sans-serif";
+    for (let lane = 0; lane < 3; lane += 1) {
+      ctx.fillStyle = CHANNEL_COLORS[lane];
+      ctx.fillText(CHANNEL_NAMES[lane], 10, lane * laneH + 18);
+    }
+    ctx.fillStyle = theme === "dark" ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)";
+    ctx.fillText("实时 · 100 Hz", w - 92, 18);
+
+    // 当前解码窗口着色（缓冲最右侧，长度 = 时间窗）
+    const windowSamples = Math.round((windowConfig.tmax - windowConfig.tmin) * 100);
+    const windowStartX = Math.max(0, w - (windowSamples / displayLen) * w * liveWave.stride);
+    const accent = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#0a84ff";
+    ctx.fillStyle = "rgba(10, 132, 255, 0.1)";
+    ctx.fillRect(windowStartX, 0, w - windowStartX, h);
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.moveTo(windowStartX, 0);
+    ctx.lineTo(windowStartX, h);
+    ctx.stroke();
+
+    for (let lane = 0; lane < 3; lane += 1) {
+      const trace = liveWave.traces[lane] ?? [];
+      if (!trace.length) continue;
+      ctx.strokeStyle = CHANNEL_COLORS[lane];
+      ctx.lineWidth = 1.1;
+      ctx.globalAlpha = 0.95;
+      ctx.beginPath();
+      for (let i = 0; i < trace.length; i += 1) {
+        const x = (i / displayLen) * w;
+        const y = lane * laneH + laneH / 2 - trace[i] * scale;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+
+    for (const event of liveWave.events ?? []) {
+      const x = (event.index / displayLen) * w;
+      const y = 14;
+      if (event.label === "dot") {
+        ctx.fillStyle = "#0a84ff";
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (event.label === "dash") {
+        ctx.strokeStyle = "#ff9f0a";
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.moveTo(x - 4, y);
+        ctx.lineTo(x + 4, y);
+        ctx.stroke();
+      } else if (event.label === "boundary") {
+        ctx.strokeStyle = theme === "dark" ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(x, 6);
+        ctx.lineTo(x, 20);
+        ctx.stroke();
+      } else if (event.label === "space") {
+        ctx.strokeStyle = theme === "dark" ? "#ffffff" : "#3a3a3c";
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(x, 6);
+        ctx.lineTo(x, 20);
+        ctx.stroke();
+      } else if (event.label === "rejected") {
+        ctx.strokeStyle = "#ff453a";
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(x - 4, y - 4);
+        ctx.lineTo(x + 4, y + 4);
+        ctx.moveTo(x + 4, y - 4);
+        ctx.lineTo(x - 4, y + 4);
+        ctx.stroke();
+      }
+    }
+
+    // 实时播放头（最右）
+    ctx.strokeStyle = "#ff375f";
+    ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    ctx.moveTo(w - 1, 0);
+    ctx.lineTo(w - 1, h);
+    ctx.stroke();
+    ctx.fillStyle = "#ff375f";
+    ctx.beginPath();
+    ctx.arc(w - 1, 24, 3.5, 0, Math.PI * 2);
+    ctx.fill();
+  }, [liveWave, windowConfig]);
+
+  const drawActive = useCallback(() => {
+    if (liveRunning && liveWave) drawLiveCanvas();
+    else drawCanvas();
+  }, [liveRunning, liveWave, drawLiveCanvas, drawCanvas]);
+
   useEffect(() => {
-    drawCanvas();
-  }, [waveform, events, drawCanvas, status]);
+    drawActive();
+  }, [waveform, events, drawActive, status, liveWave, liveRunning]);
 
   // 窗口缩放重绘
   useEffect(() => {
-    const observer = new ResizeObserver(() => drawCanvas());
+    const observer = new ResizeObserver(() => drawActive());
     if (canvasRef.current) observer.observe(canvasRef.current);
     return () => observer.disconnect();
-  }, [drawCanvas]);
+  }, [drawActive]);
 
   const togglePlay = () => {
-    if (!waveform) return;
+    if (!waveform || liveRunning) return;
     if (status === "playing") {
       setStatus("paused");
       return;
@@ -432,9 +620,8 @@ export function WaveformPanel() {
 
   // 一键演示：?demo=HELLO WORLD&speed=2（参数可跟在 #hash 后）
   useEffect(() => {
-    const params = getHashParams();
-    const demo = params.get("demo");
-    const demoSpeed = params.get("speed");
+    const demo = BOOT_PARAMS.get("demo");
+    const demoSpeed = BOOT_PARAMS.get("speed");
     if (demo) {
       const text = demo === "1" ? "HELLO WORLD" : demo;
       if (demoSpeed === "0.5" || demoSpeed === "1" || demoSpeed === "2") {
@@ -509,36 +696,43 @@ export function WaveformPanel() {
             value={speed}
             onChange={setSpeed}
           />
-          <Button variant="primary" onClick={togglePlay} disabled={!waveform} title="播放 / 暂停">
+          <Button
+            variant="primary"
+            onClick={togglePlay}
+            disabled={!waveform || liveRunning}
+            title={liveRunning ? "实时解码中" : "播放 / 暂停"}
+          >
             {status === "playing" ? <Pause size={15} weight="fill" /> : <Play size={15} weight="fill" />}
             {status === "playing" ? "暂停" : "播放"}
           </Button>
-          <Button variant="quiet" onClick={resetPlayback} title="回到开头">
+          <Button variant="quiet" onClick={resetPlayback} disabled={liveRunning} title="回到开头">
             <Stop size={15} weight="fill" /> 重置
           </Button>
         </div>
         <div className="toolbar-spacer" />
-        <div className="sim-row">
-          <span className="sim-label">
-            <Brain size={14} weight="duotone" /> 模拟：
-          </span>
-          <input
-            className="sim-input"
-            value={simText}
-            onChange={(event) => setSimText(event.target.value)}
-            aria-label="模拟文本"
-            placeholder="HELLO WORLD"
-          />
-          <Button variant="quiet" onClick={() => void handleSimulation()}>
-            <Sparkle size={14} weight="fill" /> 生成模拟脑电
-          </Button>
-          {source?.labels?.length ? (
-            <Button variant="quiet" onClick={() => void handleTrainFallback()} disabled={training}>
-              <Brain size={14} weight="duotone" />
-              {training ? "训练中…" : "训练 CSP+LDA 回退"}
+        {!formal && (
+          <div className="sim-row">
+            <span className="sim-label">
+              <Lightning size={14} weight="duotone" /> 模拟：
+            </span>
+            <input
+              className="sim-input"
+              value={simText}
+              onChange={(event) => setSimText(event.target.value)}
+              aria-label="模拟文本"
+              placeholder="HELLO WORLD"
+            />
+            <Button variant="quiet" onClick={() => void handleSimulation()}>
+              <Sparkle size={14} weight="fill" /> 生成模拟脑电
             </Button>
-          ) : null}
-        </div>
+          </div>
+        )}
+        {source?.labels?.length ? (
+          <Button variant="quiet" onClick={() => void handleTrainFallback()} disabled={training}>
+            <Lightning size={14} weight="duotone" />
+            {training ? "训练中…" : "训练 CSP+LDA 回退"}
+          </Button>
+        ) : null}
         {historySources.length > 1 && (
           <select
             className="history-select"
@@ -560,10 +754,10 @@ export function WaveformPanel() {
 
       <div className="waveform-canvas-wrap">
         <canvas ref={canvasRef} className="waveform-canvas" aria-label="三通道脑电波形" />
-        {!waveform && (
+        {!waveform && !liveWave && (
           <div className="waveform-placeholder">
-            <Brain size={26} weight="duotone" />
-            <span>加载源文件或生成模拟脑电后显示波形</span>
+            <Waveform size={26} weight="duotone" />
+            <span>{formal ? "连接设备后显示实时波形，或加载源文件" : "加载源文件或生成模拟脑电后显示波形"}</span>
           </div>
         )}
       </div>
