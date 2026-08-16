@@ -1,0 +1,6989 @@
+{
+  "format_version": 1,
+  "description": "HELLO WORLD Morse regression set assembled from real BCICIV-2b motor-imagery epochs",
+  "source": "BCI Competition IV Dataset 2b; local preprocessing cache is intentionally not committed",
+  "source_shape": [
+    3680,
+    3,
+    351
+  ],
+  "sampling_rate_hz": 100,
+  "channels": [
+    "C3",
+    "Cz",
+    "C4",
+    "STI 014"
+  ],
+  "event_codes": {
+    "1": "left_hand/dot",
+    "2": "right_hand/dash",
+    "3": "character_boundary",
+    "4": "word_boundary"
+  },
+  "segment_duration_seconds": 0.5,
+  "random_seed": 20260812,
+  "files": [
+    {
+      "file": "01_correct_hello_world_raw.fif",
+      "is_correct": true,
+      "expected_decoded_text": "HELLO WORLD",
+      "expected_morse": "....  .  .-..  .-..  --- / .--  ---  .-.  .-..  -..",
+      "error_description": "Correct sequence with no injected error",
+      "n_events": 43,
+      "n_symbol_events": 32,
+      "duration_seconds": 21.5,
+      "sha256": "a9cf8b40d07595e3594cb74aa83f37a8d5c1d6ae9da8858444d2f7b382e99a1c",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 468,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            167,
+            217
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 1203,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            235,
+            285
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 2027,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            272,
+            322
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "symbol",
+          "source_index": 81,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            32,
+            82
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "boundary_context",
+          "source_index": 81,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            51,
+            101
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "symbol",
+          "source_index": 2560,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            106,
+            156
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "boundary_context",
+          "source_index": 2560,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            125,
+            175
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 1321,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            283,
+            333
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 753,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            61,
+            111
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 599,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            199,
+            249
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "symbol",
+          "source_index": 251,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            84,
+            134
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "boundary_context",
+          "source_index": 251,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            103,
+            153
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 2450,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            47,
+            97
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 671,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            169,
+            219
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 117,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            188,
+            238
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "symbol",
+          "source_index": 2789,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            182,
+            232
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "boundary_context",
+          "source_index": 2789,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            201,
+            251
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 1279,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            27,
+            77
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 2212,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0602",
+          "source_crop_samples": [
+            219,
+            269
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "symbol",
+          "source_index": 2029,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            115,
+            165
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 2029,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            134,
+            184
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 4,
+          "event_name": "word_boundary",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "boundary_context",
+          "source_index": 2029,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            153,
+            203
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 528,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            35,
+            85
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 1946,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            167,
+            217
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "symbol",
+          "source_index": 3310,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            240,
+            290
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "boundary_context",
+          "source_index": 3310,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            259,
+            309
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "symbol",
+          "source_index": 1988,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            116,
+            166
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 1952,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            188,
+            238
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "symbol",
+          "source_index": 1554,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            162,
+            212
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "boundary_context",
+          "source_index": 1554,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            181,
+            231
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "symbol",
+          "source_index": 1218,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            233,
+            283
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 3222,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            164,
+            214
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "symbol",
+          "source_index": 3619,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            191,
+            241
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "boundary_context",
+          "source_index": 3619,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            210,
+            260
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "symbol",
+          "source_index": 2860,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            123,
+            173
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 520,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            263,
+            313
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 3331,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            137,
+            187
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "symbol",
+          "source_index": 1108,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            174,
+            224
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "boundary_context",
+          "source_index": 1108,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            193,
+            243
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "symbol",
+          "source_index": 3568,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            99,
+            149
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 694,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            148,
+            198
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "symbol",
+          "source_index": 1847,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            170,
+            220
+          ]
+        },
+        {
+          "event_index": 42,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2105,
+          "onset_seconds": 21.05,
+          "source_role": "boundary_context",
+          "source_index": 1847,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            189,
+            239
+          ]
+        }
+      ]
+    },
+    {
+      "file": "02_error_h_to_b_dot_to_dash_raw.fif",
+      "is_correct": false,
+      "expected_decoded_text": "BELLO WORLD",
+      "expected_morse": "-...  .  .-..  .-..  --- / .--  ---  .-.  .-..  -..",
+      "error_description": "Replace the first dot in H(....) with a dash: H -> B(-...)",
+      "n_events": 43,
+      "n_symbol_events": 32,
+      "duration_seconds": 21.5,
+      "sha256": "743f9306b948d0d6110050204a4a7ca860d7144650e1fcd00789453f8191d184",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 267,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            209,
+            259
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 792,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            263,
+            313
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 659,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            70,
+            120
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "symbol",
+          "source_index": 220,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            189,
+            239
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "boundary_context",
+          "source_index": 220,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            208,
+            258
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "symbol",
+          "source_index": 778,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            98,
+            148
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "boundary_context",
+          "source_index": 778,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            117,
+            167
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 1731,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            218,
+            268
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 393,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            37,
+            87
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 3074,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            87,
+            137
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "symbol",
+          "source_index": 3289,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            28,
+            78
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "boundary_context",
+          "source_index": 3289,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            47,
+            97
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 1578,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            192,
+            242
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 502,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            287,
+            337
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 373,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            242,
+            292
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "symbol",
+          "source_index": 2834,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            185,
+            235
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "boundary_context",
+          "source_index": 2834,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            204,
+            254
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 2682,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            139,
+            189
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 714,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            193,
+            243
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "symbol",
+          "source_index": 819,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            219,
+            269
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 819,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            238,
+            288
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 4,
+          "event_name": "word_boundary",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "boundary_context",
+          "source_index": 819,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            257,
+            307
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 407,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            267,
+            317
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 1383,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            111,
+            161
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "symbol",
+          "source_index": 3616,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            205,
+            255
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "boundary_context",
+          "source_index": 3616,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            224,
+            274
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "symbol",
+          "source_index": 153,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            86,
+            136
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 3523,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            145,
+            195
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "symbol",
+          "source_index": 2305,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            249,
+            299
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "boundary_context",
+          "source_index": 2305,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            268,
+            318
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "symbol",
+          "source_index": 56,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            174,
+            224
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 2857,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            232,
+            282
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "symbol",
+          "source_index": 2681,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            110,
+            160
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "boundary_context",
+          "source_index": 2681,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            129,
+            179
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "symbol",
+          "source_index": 436,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            183,
+            233
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 131,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            274,
+            324
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 633,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            31,
+            81
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "symbol",
+          "source_index": 644,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            180,
+            230
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "boundary_context",
+          "source_index": 644,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            199,
+            249
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "symbol",
+          "source_index": 352,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            217,
+            267
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 1007,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            95,
+            145
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "symbol",
+          "source_index": 3038,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            194,
+            244
+          ]
+        },
+        {
+          "event_index": 42,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2105,
+          "onset_seconds": 21.05,
+          "source_role": "boundary_context",
+          "source_index": 3038,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            213,
+            263
+          ]
+        }
+      ]
+    },
+    {
+      "file": "03_error_h_to_s_missing_dot_raw.fif",
+      "is_correct": false,
+      "expected_decoded_text": "SELLO WORLD",
+      "expected_morse": "...  .  .-..  .-..  --- / .--  ---  .-.  .-..  -..",
+      "error_description": "Drop the final dot in H(....): H -> S(...)",
+      "n_events": 42,
+      "n_symbol_events": 31,
+      "duration_seconds": 21.0,
+      "sha256": "0890e745a325a883647017d7314f61206d4294a689afbd31bbd996d074e4e163",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 921,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            31,
+            81
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 844,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            248,
+            298
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 3566,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            153,
+            203
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "boundary_context",
+          "source_index": 3566,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            172,
+            222
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "symbol",
+          "source_index": 3522,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            225,
+            275
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "boundary_context",
+          "source_index": 3522,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            244,
+            294
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "symbol",
+          "source_index": 549,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            231,
+            281
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 3100,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            180,
+            230
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 3366,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            69,
+            119
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 231,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            156,
+            206
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "boundary_context",
+          "source_index": 231,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            175,
+            225
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "symbol",
+          "source_index": 218,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            267,
+            317
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 1168,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            257,
+            307
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 286,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            51,
+            101
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 129,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            78,
+            128
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "boundary_context",
+          "source_index": 129,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            97,
+            147
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "symbol",
+          "source_index": 1469,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            113,
+            163
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 3026,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            125,
+            175
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 386,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            245,
+            295
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "boundary_context",
+          "source_index": 386,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            264,
+            314
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 4,
+          "event_name": "word_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 386,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            283,
+            333
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "symbol",
+          "source_index": 255,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            164,
+            214
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 2958,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            197,
+            247
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 3118,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            42,
+            92
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "boundary_context",
+          "source_index": 3118,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            61,
+            111
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "symbol",
+          "source_index": 513,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            91,
+            141
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "symbol",
+          "source_index": 3017,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            240,
+            290
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 2771,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            298,
+            348
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "boundary_context",
+          "source_index": 2771,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            40,
+            90
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "symbol",
+          "source_index": 3342,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            134,
+            184
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "symbol",
+          "source_index": 2726,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            75,
+            125
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 1178,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            157,
+            207
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "boundary_context",
+          "source_index": 1178,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            176,
+            226
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "symbol",
+          "source_index": 667,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            124,
+            174
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "symbol",
+          "source_index": 1032,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            75,
+            125
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 363,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            271,
+            321
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 2966,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            205,
+            255
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "boundary_context",
+          "source_index": 2966,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            224,
+            274
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "symbol",
+          "source_index": 660,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            237,
+            287
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "symbol",
+          "source_index": 3098,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            160,
+            210
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 3435,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            183,
+            233
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "boundary_context",
+          "source_index": 3435,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            202,
+            252
+          ]
+        }
+      ]
+    },
+    {
+      "file": "04_error_first_l_to_r_raw.fif",
+      "is_correct": false,
+      "expected_decoded_text": "HERLO WORLD",
+      "expected_morse": "....  .  .-.  .-..  --- / .--  ---  .-.  .-..  -..",
+      "error_description": "Drop the final dot in the first L(.-..): L -> R(.-.)",
+      "n_events": 42,
+      "n_symbol_events": 31,
+      "duration_seconds": 21.0,
+      "sha256": "1ade02cb318cb0dbac6c40e237755670f54f41265b76eff904c463e35604b999",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 2367,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            72,
+            122
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 3314,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            228,
+            278
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 1240,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            238,
+            288
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "symbol",
+          "source_index": 1196,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            291,
+            341
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "boundary_context",
+          "source_index": 1196,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            33,
+            83
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "symbol",
+          "source_index": 1271,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            57,
+            107
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "boundary_context",
+          "source_index": 1271,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            76,
+            126
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 2544,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            106,
+            156
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 119,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            148,
+            198
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 3402,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            35,
+            85
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "boundary_context",
+          "source_index": 3402,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            54,
+            104
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "symbol",
+          "source_index": 1360,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            140,
+            190
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 962,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            114,
+            164
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 2478,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            271,
+            321
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 3186,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            171,
+            221
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "boundary_context",
+          "source_index": 3186,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            190,
+            240
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "symbol",
+          "source_index": 3567,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            179,
+            229
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 1329,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            215,
+            265
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 1582,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            177,
+            227
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "boundary_context",
+          "source_index": 1582,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            196,
+            246
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 4,
+          "event_name": "word_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 1582,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            215,
+            265
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "symbol",
+          "source_index": 1331,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            88,
+            138
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 1382,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            55,
+            105
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 34,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            58,
+            108
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "boundary_context",
+          "source_index": 34,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            77,
+            127
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "symbol",
+          "source_index": 2487,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            278,
+            328
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "symbol",
+          "source_index": 46,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            282,
+            332
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 3516,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            163,
+            213
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "boundary_context",
+          "source_index": 3516,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            182,
+            232
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "symbol",
+          "source_index": 2754,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            261,
+            311
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "symbol",
+          "source_index": 3542,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            74,
+            124
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 1882,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            167,
+            217
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "boundary_context",
+          "source_index": 1882,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            186,
+            236
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "symbol",
+          "source_index": 2943,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            128,
+            178
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "symbol",
+          "source_index": 1805,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            145,
+            195
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 1633,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            171,
+            221
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 1031,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            76,
+            126
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "boundary_context",
+          "source_index": 1031,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            95,
+            145
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "symbol",
+          "source_index": 2911,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            147,
+            197
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "symbol",
+          "source_index": 2752,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            100,
+            150
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 1951,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            121,
+            171
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "boundary_context",
+          "source_index": 1951,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            140,
+            190
+          ]
+        }
+      ]
+    },
+    {
+      "file": "05_error_o_to_a_raw.fif",
+      "is_correct": false,
+      "expected_decoded_text": "HELLA WORLD",
+      "expected_morse": "....  .  .-..  .-..  .- / .--  ---  .-.  .-..  -..",
+      "error_description": "Misassemble the first O(---) as A(.-): O -> A",
+      "n_events": 42,
+      "n_symbol_events": 31,
+      "duration_seconds": 21.0,
+      "sha256": "b92d0ddad27dc45caaf1f134af6835d3d3051a215f52e1da95ba9880eebb49de",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 396,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            273,
+            323
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 2396,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            56,
+            106
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 1238,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            164,
+            214
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "symbol",
+          "source_index": 1714,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            67,
+            117
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "boundary_context",
+          "source_index": 1714,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            86,
+            136
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "symbol",
+          "source_index": 1086,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            137,
+            187
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "boundary_context",
+          "source_index": 1086,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            156,
+            206
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 1117,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            214,
+            264
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 2582,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            146,
+            196
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 49,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            70,
+            120
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "symbol",
+          "source_index": 1741,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            91,
+            141
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "boundary_context",
+          "source_index": 1741,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            110,
+            160
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 1758,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            204,
+            254
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 3660,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            239,
+            289
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 3201,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            172,
+            222
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "symbol",
+          "source_index": 2597,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            280,
+            330
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "boundary_context",
+          "source_index": 2597,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            299,
+            349
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 2210,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0602",
+          "source_crop_samples": [
+            126,
+            176
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 3544,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            197,
+            247
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "boundary_context",
+          "source_index": 3544,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            216,
+            266
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 4,
+          "event_name": "word_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 3544,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            235,
+            285
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "symbol",
+          "source_index": 759,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            253,
+            303
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 2979,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            143,
+            193
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 398,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            230,
+            280
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "boundary_context",
+          "source_index": 398,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            249,
+            299
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "symbol",
+          "source_index": 2772,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            297,
+            347
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "symbol",
+          "source_index": 2110,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0601",
+          "source_crop_samples": [
+            198,
+            248
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 567,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            188,
+            238
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "boundary_context",
+          "source_index": 567,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            207,
+            257
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "symbol",
+          "source_index": 3508,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            182,
+            232
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "symbol",
+          "source_index": 1832,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            237,
+            287
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 1682,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            246,
+            296
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "boundary_context",
+          "source_index": 1682,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            265,
+            315
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "symbol",
+          "source_index": 917,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            233,
+            283
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "symbol",
+          "source_index": 2601,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            235,
+            285
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 2577,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            197,
+            247
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 484,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            58,
+            108
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "boundary_context",
+          "source_index": 484,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            77,
+            127
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "symbol",
+          "source_index": 2465,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            265,
+            315
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "symbol",
+          "source_index": 2769,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            175,
+            225
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 2894,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            110,
+            160
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "boundary_context",
+          "source_index": 2894,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            129,
+            179
+          ]
+        }
+      ]
+    },
+    {
+      "file": "06_error_w_to_p_extra_dot_raw.fif",
+      "is_correct": false,
+      "expected_decoded_text": "HELLO PORLD",
+      "expected_morse": "....  .  .-..  .-..  --- / .--.  ---  .-.  .-..  -..",
+      "error_description": "Append one extra dot to W(.--): W -> P(.--.)",
+      "n_events": 44,
+      "n_symbol_events": 33,
+      "duration_seconds": 22.0,
+      "sha256": "77b61bd4b794628e44b1dc104fea18bdfc35a663a2cae66ef89e288fc116b780",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 41,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            157,
+            207
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 3401,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            123,
+            173
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 2580,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            235,
+            285
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "symbol",
+          "source_index": 383,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            126,
+            176
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "boundary_context",
+          "source_index": 383,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            145,
+            195
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "symbol",
+          "source_index": 2588,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            34,
+            84
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "boundary_context",
+          "source_index": 2588,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            53,
+            103
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 2052,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0601",
+          "source_crop_samples": [
+            184,
+            234
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 3182,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            186,
+            236
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 575,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            142,
+            192
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "symbol",
+          "source_index": 372,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            129,
+            179
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "boundary_context",
+          "source_index": 372,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            148,
+            198
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 1375,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            160,
+            210
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 750,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            45,
+            95
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 1368,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            216,
+            266
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "symbol",
+          "source_index": 1497,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            299,
+            349
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "boundary_context",
+          "source_index": 1497,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            41,
+            91
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 855,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            128,
+            178
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 2259,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0602",
+          "source_crop_samples": [
+            296,
+            346
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "symbol",
+          "source_index": 717,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            46,
+            96
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 717,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            65,
+            115
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 4,
+          "event_name": "word_boundary",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "boundary_context",
+          "source_index": 717,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            84,
+            134
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 1068,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            71,
+            121
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 1247,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            65,
+            115
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "symbol",
+          "source_index": 3467,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            232,
+            282
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "symbol",
+          "source_index": 560,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            168,
+            218
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "boundary_context",
+          "source_index": 560,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            187,
+            237
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 1448,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            99,
+            149
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "symbol",
+          "source_index": 1263,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            198,
+            248
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "symbol",
+          "source_index": 3176,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            86,
+            136
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "boundary_context",
+          "source_index": 3176,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            105,
+            155
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 3160,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            86,
+            136
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "symbol",
+          "source_index": 98,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            104,
+            154
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "symbol",
+          "source_index": 1863,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            56,
+            106
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "boundary_context",
+          "source_index": 1863,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            75,
+            125
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 3306,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            301,
+            351
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 1689,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            46,
+            96
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "symbol",
+          "source_index": 1106,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            100,
+            150
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "symbol",
+          "source_index": 873,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            85,
+            135
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "boundary_context",
+          "source_index": 873,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            104,
+            154
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 897,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            180,
+            230
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "symbol",
+          "source_index": 3504,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            262,
+            312
+          ]
+        },
+        {
+          "event_index": 42,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2105,
+          "onset_seconds": 21.05,
+          "source_role": "symbol",
+          "source_index": 3641,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            87,
+            137
+          ]
+        },
+        {
+          "event_index": 43,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2155,
+          "onset_seconds": 21.55,
+          "source_role": "boundary_context",
+          "source_index": 3641,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            106,
+            156
+          ]
+        }
+      ]
+    },
+    {
+      "file": "07_error_second_o_to_k_raw.fif",
+      "is_correct": false,
+      "expected_decoded_text": "HELLO WKRLD",
+      "expected_morse": "....  .  .-..  .-..  --- / .--  -.-  .-.  .-..  -..",
+      "error_description": "Replace the middle dash in the second O(---) with a dot: O -> K(-.-)",
+      "n_events": 43,
+      "n_symbol_events": 32,
+      "duration_seconds": 21.5,
+      "sha256": "e20a685975b6a63f85ecd572325d02d1eb34e9adf7b729d57447dad25f869953",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 3180,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            237,
+            287
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 205,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            150,
+            200
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 764,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            77,
+            127
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "symbol",
+          "source_index": 2076,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0601",
+          "source_crop_samples": [
+            165,
+            215
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "boundary_context",
+          "source_index": 2076,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0601",
+          "source_crop_samples": [
+            184,
+            234
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "symbol",
+          "source_index": 1302,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            96,
+            146
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "boundary_context",
+          "source_index": 1302,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            115,
+            165
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 2489,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            287,
+            337
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 3256,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            154,
+            204
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 3104,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            89,
+            139
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "symbol",
+          "source_index": 732,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            153,
+            203
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "boundary_context",
+          "source_index": 732,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            172,
+            222
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 1307,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            137,
+            187
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 682,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            299,
+            349
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 1783,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            59,
+            109
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "symbol",
+          "source_index": 2030,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            76,
+            126
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "boundary_context",
+          "source_index": 2030,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            95,
+            145
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 1604,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            141,
+            191
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 375,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            115,
+            165
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "symbol",
+          "source_index": 221,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            253,
+            303
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 221,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            272,
+            322
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 4,
+          "event_name": "word_boundary",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "boundary_context",
+          "source_index": 221,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            291,
+            341
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 2587,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            43,
+            93
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 1808,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            47,
+            97
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "symbol",
+          "source_index": 2486,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            222,
+            272
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "boundary_context",
+          "source_index": 2486,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            241,
+            291
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "symbol",
+          "source_index": 711,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0203",
+          "source_crop_samples": [
+            234,
+            284
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 42,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            153,
+            203
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "symbol",
+          "source_index": 1982,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            209,
+            259
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "boundary_context",
+          "source_index": 1982,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            228,
+            278
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "symbol",
+          "source_index": 1438,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            63,
+            113
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 2581,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            269,
+            319
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "symbol",
+          "source_index": 1696,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            229,
+            279
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "boundary_context",
+          "source_index": 1696,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            248,
+            298
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "symbol",
+          "source_index": 3055,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            136,
+            186
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 2122,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0601",
+          "source_crop_samples": [
+            259,
+            309
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 2398,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            241,
+            291
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "symbol",
+          "source_index": 1428,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            103,
+            153
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "boundary_context",
+          "source_index": 1428,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            122,
+            172
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "symbol",
+          "source_index": 587,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            48,
+            98
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 832,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            268,
+            318
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "symbol",
+          "source_index": 3193,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            112,
+            162
+          ]
+        },
+        {
+          "event_index": 42,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2105,
+          "onset_seconds": 21.05,
+          "source_role": "boundary_context",
+          "source_index": 3193,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            131,
+            181
+          ]
+        }
+      ]
+    },
+    {
+      "file": "08_error_r_to_w_raw.fif",
+      "is_correct": false,
+      "expected_decoded_text": "HELLO WOWLD",
+      "expected_morse": "....  .  .-..  .-..  --- / .--  ---  .--  .-..  -..",
+      "error_description": "Replace the final dot in R(.-.) with a dash: R -> W(.--)",
+      "n_events": 43,
+      "n_symbol_events": 32,
+      "duration_seconds": 21.5,
+      "sha256": "63f12b08c3be872110fd91ea888b7b6b2d3ee781aacbbff5488d9643bce3fd88",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 282,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            210,
+            260
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 2827,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            214,
+            264
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 955,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            219,
+            269
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "symbol",
+          "source_index": 1267,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            148,
+            198
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "boundary_context",
+          "source_index": 1267,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            167,
+            217
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "symbol",
+          "source_index": 2395,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            95,
+            145
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "boundary_context",
+          "source_index": 2395,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            114,
+            164
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 877,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            198,
+            248
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 1517,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            75,
+            125
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 847,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            234,
+            284
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "symbol",
+          "source_index": 3493,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            97,
+            147
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "boundary_context",
+          "source_index": 3493,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            116,
+            166
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 3093,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            293,
+            343
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 2278,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0602",
+          "source_crop_samples": [
+            73,
+            123
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 922,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            57,
+            107
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "symbol",
+          "source_index": 3497,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            63,
+            113
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "boundary_context",
+          "source_index": 3497,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            82,
+            132
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 3119,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            242,
+            292
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 2764,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            145,
+            195
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "symbol",
+          "source_index": 2910,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            26,
+            76
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 2910,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            45,
+            95
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 4,
+          "event_name": "word_boundary",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "boundary_context",
+          "source_index": 2910,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            64,
+            114
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 3108,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            207,
+            257
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 605,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            133,
+            183
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "symbol",
+          "source_index": 3082,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            114,
+            164
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "boundary_context",
+          "source_index": 3082,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            133,
+            183
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "symbol",
+          "source_index": 1756,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            119,
+            169
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 3421,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            249,
+            299
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "symbol",
+          "source_index": 3492,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            125,
+            175
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "boundary_context",
+          "source_index": 3492,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            144,
+            194
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "symbol",
+          "source_index": 2912,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            32,
+            82
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 1140,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            136,
+            186
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "symbol",
+          "source_index": 3391,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            65,
+            115
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "boundary_context",
+          "source_index": 3391,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            84,
+            134
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "symbol",
+          "source_index": 3036,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            264,
+            314
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 1966,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            27,
+            77
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 3305,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            283,
+            333
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "symbol",
+          "source_index": 1704,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            66,
+            116
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "boundary_context",
+          "source_index": 1704,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            85,
+            135
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "symbol",
+          "source_index": 3562,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            154,
+            204
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 940,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            109,
+            159
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "symbol",
+          "source_index": 3261,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            135,
+            185
+          ]
+        },
+        {
+          "event_index": 42,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2105,
+          "onset_seconds": 21.05,
+          "source_role": "boundary_context",
+          "source_index": 3261,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            154,
+            204
+          ]
+        }
+      ]
+    },
+    {
+      "file": "09_error_d_to_g_raw.fif",
+      "is_correct": false,
+      "expected_decoded_text": "HELLO WORLG",
+      "expected_morse": "....  .  .-..  .-..  --- / .--  ---  .-.  .-..  --.",
+      "error_description": "Replace the second dot in D(-..) with a dash: D -> G(--.)",
+      "n_events": 43,
+      "n_symbol_events": 32,
+      "duration_seconds": 21.5,
+      "sha256": "baee368388bc56764bb23792d3aaf06ed154e2c83e539e459899c817c039ace0",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 1954,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            26,
+            76
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 878,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            121,
+            171
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 1088,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            154,
+            204
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "symbol",
+          "source_index": 1246,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            202,
+            252
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "boundary_context",
+          "source_index": 1246,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            221,
+            271
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "symbol",
+          "source_index": 1073,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            210,
+            260
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "boundary_context",
+          "source_index": 1073,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            229,
+            279
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 2909,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            38,
+            88
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 3096,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            51,
+            101
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 1989,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0503",
+          "source_crop_samples": [
+            107,
+            157
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "symbol",
+          "source_index": 3443,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            186,
+            236
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "boundary_context",
+          "source_index": 3443,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            205,
+            255
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 3277,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            176,
+            226
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 1700,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            293,
+            343
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 2944,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            81,
+            131
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "symbol",
+          "source_index": 524,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            31,
+            81
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "boundary_context",
+          "source_index": 524,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            50,
+            100
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 1235,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            61,
+            111
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 2858,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            299,
+            349
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "symbol",
+          "source_index": 2989,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            179,
+            229
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 2989,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            198,
+            248
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 4,
+          "event_name": "word_boundary",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "boundary_context",
+          "source_index": 2989,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            217,
+            267
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 2604,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0702",
+          "source_crop_samples": [
+            118,
+            168
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 3236,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            253,
+            303
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "symbol",
+          "source_index": 411,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            176,
+            226
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "boundary_context",
+          "source_index": 411,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            195,
+            245
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "symbol",
+          "source_index": 1865,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            274,
+            324
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 1396,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            114,
+            164
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "symbol",
+          "source_index": 1243,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            289,
+            339
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "boundary_context",
+          "source_index": 1243,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            31,
+            81
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "symbol",
+          "source_index": 1231,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0401",
+          "source_crop_samples": [
+            160,
+            210
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 3507,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            183,
+            233
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "symbol",
+          "source_index": 3352,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            284,
+            334
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "boundary_context",
+          "source_index": 3352,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            26,
+            76
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "symbol",
+          "source_index": 1618,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            151,
+            201
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 217,
+          "source_label": 1,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            132,
+            182
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 2803,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            268,
+            318
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "symbol",
+          "source_index": 2273,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0602",
+          "source_crop_samples": [
+            67,
+            117
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "boundary_context",
+          "source_index": 2273,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0602",
+          "source_crop_samples": [
+            86,
+            136
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "symbol",
+          "source_index": 1349,
+          "source_label": 1,
+          "source_subject": "B04",
+          "source_session": "B0402",
+          "source_crop_samples": [
+            265,
+            315
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 3400,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0902",
+          "source_crop_samples": [
+            273,
+            323
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "symbol",
+          "source_index": 2453,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            155,
+            205
+          ]
+        },
+        {
+          "event_index": 42,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2105,
+          "onset_seconds": 21.05,
+          "source_role": "boundary_context",
+          "source_index": 2453,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            174,
+            224
+          ]
+        }
+      ]
+    },
+    {
+      "file": "10_error_missing_word_space_raw.fif",
+      "is_correct": false,
+      "expected_decoded_text": "HELLOWORLD",
+      "expected_morse": "....  .  .-..  .-..  ---  .--  ---  .-.  .-..  -..",
+      "error_description": "Remove the word boundary between HELLO and WORLD",
+      "n_events": 42,
+      "n_symbol_events": 32,
+      "duration_seconds": 21.0,
+      "sha256": "6468775651704e79b9101a0b517a09ddce43eae92ec5ed6a59b51968c44c976b",
+      "events": [
+        {
+          "event_index": 0,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 5,
+          "onset_seconds": 0.05,
+          "source_role": "symbol",
+          "source_index": 2281,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            214,
+            264
+          ]
+        },
+        {
+          "event_index": 1,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 55,
+          "onset_seconds": 0.55,
+          "source_role": "symbol",
+          "source_index": 145,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0102",
+          "source_crop_samples": [
+            146,
+            196
+          ]
+        },
+        {
+          "event_index": 2,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 105,
+          "onset_seconds": 1.05,
+          "source_role": "symbol",
+          "source_index": 2810,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            158,
+            208
+          ]
+        },
+        {
+          "event_index": 3,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 155,
+          "onset_seconds": 1.55,
+          "source_role": "symbol",
+          "source_index": 309,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            158,
+            208
+          ]
+        },
+        {
+          "event_index": 4,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 205,
+          "onset_seconds": 2.05,
+          "source_role": "boundary_context",
+          "source_index": 309,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0103",
+          "source_crop_samples": [
+            177,
+            227
+          ]
+        },
+        {
+          "event_index": 5,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 255,
+          "onset_seconds": 2.55,
+          "source_role": "symbol",
+          "source_index": 1658,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            249,
+            299
+          ]
+        },
+        {
+          "event_index": 6,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 305,
+          "onset_seconds": 3.05,
+          "source_role": "boundary_context",
+          "source_index": 1658,
+          "source_label": 0,
+          "source_subject": "B05",
+          "source_session": "B0501",
+          "source_crop_samples": [
+            268,
+            318
+          ]
+        },
+        {
+          "event_index": 7,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 355,
+          "onset_seconds": 3.55,
+          "source_role": "symbol",
+          "source_index": 3605,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            29,
+            79
+          ]
+        },
+        {
+          "event_index": 8,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 405,
+          "onset_seconds": 4.05,
+          "source_role": "symbol",
+          "source_index": 598,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0202",
+          "source_crop_samples": [
+            143,
+            193
+          ]
+        },
+        {
+          "event_index": 9,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 455,
+          "onset_seconds": 4.55,
+          "source_role": "symbol",
+          "source_index": 2045,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0601",
+          "source_crop_samples": [
+            240,
+            290
+          ]
+        },
+        {
+          "event_index": 10,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 505,
+          "onset_seconds": 5.05,
+          "source_role": "symbol",
+          "source_index": 0,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            215,
+            265
+          ]
+        },
+        {
+          "event_index": 11,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 555,
+          "onset_seconds": 5.55,
+          "source_role": "boundary_context",
+          "source_index": 0,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            234,
+            284
+          ]
+        },
+        {
+          "event_index": 12,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 605,
+          "onset_seconds": 6.05,
+          "source_role": "symbol",
+          "source_index": 3359,
+          "source_label": 0,
+          "source_subject": "B09",
+          "source_session": "B0901",
+          "source_crop_samples": [
+            163,
+            213
+          ]
+        },
+        {
+          "event_index": 13,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 655,
+          "onset_seconds": 6.55,
+          "source_role": "symbol",
+          "source_index": 2925,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            190,
+            240
+          ]
+        },
+        {
+          "event_index": 14,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 705,
+          "onset_seconds": 7.05,
+          "source_role": "symbol",
+          "source_index": 870,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            72,
+            122
+          ]
+        },
+        {
+          "event_index": 15,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 755,
+          "onset_seconds": 7.55,
+          "source_role": "symbol",
+          "source_index": 1144,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            257,
+            307
+          ]
+        },
+        {
+          "event_index": 16,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 805,
+          "onset_seconds": 8.05,
+          "source_role": "boundary_context",
+          "source_index": 1144,
+          "source_label": 0,
+          "source_subject": "B03",
+          "source_session": "B0303",
+          "source_crop_samples": [
+            276,
+            326
+          ]
+        },
+        {
+          "event_index": 17,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 855,
+          "onset_seconds": 8.55,
+          "source_role": "symbol",
+          "source_index": 2064,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0601",
+          "source_crop_samples": [
+            264,
+            314
+          ]
+        },
+        {
+          "event_index": 18,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 905,
+          "onset_seconds": 9.05,
+          "source_role": "symbol",
+          "source_index": 2358,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            81,
+            131
+          ]
+        },
+        {
+          "event_index": 19,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 955,
+          "onset_seconds": 9.55,
+          "source_role": "symbol",
+          "source_index": 905,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            77,
+            127
+          ]
+        },
+        {
+          "event_index": 20,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1005,
+          "onset_seconds": 10.05,
+          "source_role": "boundary_context",
+          "source_index": 905,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0301",
+          "source_crop_samples": [
+            96,
+            146
+          ]
+        },
+        {
+          "event_index": 21,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1055,
+          "onset_seconds": 10.55,
+          "source_role": "symbol",
+          "source_index": 2444,
+          "source_label": 0,
+          "source_subject": "B07",
+          "source_session": "B0701",
+          "source_crop_samples": [
+            273,
+            323
+          ]
+        },
+        {
+          "event_index": 22,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1105,
+          "onset_seconds": 11.05,
+          "source_role": "symbol",
+          "source_index": 2820,
+          "source_label": 1,
+          "source_subject": "B07",
+          "source_session": "B0703",
+          "source_crop_samples": [
+            77,
+            127
+          ]
+        },
+        {
+          "event_index": 23,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1155,
+          "onset_seconds": 11.55,
+          "source_role": "symbol",
+          "source_index": 2854,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            246,
+            296
+          ]
+        },
+        {
+          "event_index": 24,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1205,
+          "onset_seconds": 12.05,
+          "source_role": "boundary_context",
+          "source_index": 2854,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0801",
+          "source_crop_samples": [
+            265,
+            315
+          ]
+        },
+        {
+          "event_index": 25,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1255,
+          "onset_seconds": 12.55,
+          "source_role": "symbol",
+          "source_index": 448,
+          "source_label": 1,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            179,
+            229
+          ]
+        },
+        {
+          "event_index": 26,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1305,
+          "onset_seconds": 13.05,
+          "source_role": "symbol",
+          "source_index": 2345,
+          "source_label": 1,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            29,
+            79
+          ]
+        },
+        {
+          "event_index": 27,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1355,
+          "onset_seconds": 13.55,
+          "source_role": "symbol",
+          "source_index": 3189,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            252,
+            302
+          ]
+        },
+        {
+          "event_index": 28,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1405,
+          "onset_seconds": 14.05,
+          "source_role": "boundary_context",
+          "source_index": 3189,
+          "source_label": 1,
+          "source_subject": "B08",
+          "source_session": "B0803",
+          "source_crop_samples": [
+            271,
+            321
+          ]
+        },
+        {
+          "event_index": 29,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1455,
+          "onset_seconds": 14.55,
+          "source_role": "symbol",
+          "source_index": 2423,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            202,
+            252
+          ]
+        },
+        {
+          "event_index": 30,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1505,
+          "onset_seconds": 15.05,
+          "source_role": "symbol",
+          "source_index": 939,
+          "source_label": 1,
+          "source_subject": "B03",
+          "source_session": "B0302",
+          "source_crop_samples": [
+            159,
+            209
+          ]
+        },
+        {
+          "event_index": 31,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1555,
+          "onset_seconds": 15.55,
+          "source_role": "symbol",
+          "source_index": 64,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            212,
+            262
+          ]
+        },
+        {
+          "event_index": 32,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1605,
+          "onset_seconds": 16.05,
+          "source_role": "boundary_context",
+          "source_index": 64,
+          "source_label": 0,
+          "source_subject": "B01",
+          "source_session": "B0101",
+          "source_crop_samples": [
+            231,
+            281
+          ]
+        },
+        {
+          "event_index": 33,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1655,
+          "onset_seconds": 16.55,
+          "source_role": "symbol",
+          "source_index": 3087,
+          "source_label": 0,
+          "source_subject": "B08",
+          "source_session": "B0802",
+          "source_crop_samples": [
+            193,
+            243
+          ]
+        },
+        {
+          "event_index": 34,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1705,
+          "onset_seconds": 17.05,
+          "source_role": "symbol",
+          "source_index": 3579,
+          "source_label": 1,
+          "source_subject": "B09",
+          "source_session": "B0903",
+          "source_crop_samples": [
+            134,
+            184
+          ]
+        },
+        {
+          "event_index": 35,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1755,
+          "onset_seconds": 17.55,
+          "source_role": "symbol",
+          "source_index": 2192,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0602",
+          "source_crop_samples": [
+            79,
+            129
+          ]
+        },
+        {
+          "event_index": 36,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1805,
+          "onset_seconds": 18.05,
+          "source_role": "symbol",
+          "source_index": 1505,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            163,
+            213
+          ]
+        },
+        {
+          "event_index": 37,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 1855,
+          "onset_seconds": 18.55,
+          "source_role": "boundary_context",
+          "source_index": 1505,
+          "source_label": 0,
+          "source_subject": "B04",
+          "source_session": "B0403",
+          "source_crop_samples": [
+            182,
+            232
+          ]
+        },
+        {
+          "event_index": 38,
+          "event_code": 2,
+          "event_name": "right_hand/dash",
+          "sample": 1905,
+          "onset_seconds": 19.05,
+          "source_role": "symbol",
+          "source_index": 1827,
+          "source_label": 1,
+          "source_subject": "B05",
+          "source_session": "B0502",
+          "source_crop_samples": [
+            204,
+            254
+          ]
+        },
+        {
+          "event_index": 39,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 1955,
+          "onset_seconds": 19.55,
+          "source_role": "symbol",
+          "source_index": 508,
+          "source_label": 0,
+          "source_subject": "B02",
+          "source_session": "B0201",
+          "source_crop_samples": [
+            172,
+            222
+          ]
+        },
+        {
+          "event_index": 40,
+          "event_code": 1,
+          "event_name": "left_hand/dot",
+          "sample": 2005,
+          "onset_seconds": 20.05,
+          "source_role": "symbol",
+          "source_index": 2383,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            39,
+            89
+          ]
+        },
+        {
+          "event_index": 41,
+          "event_code": 3,
+          "event_name": "character_boundary",
+          "sample": 2055,
+          "onset_seconds": 20.55,
+          "source_role": "boundary_context",
+          "source_index": 2383,
+          "source_label": 0,
+          "source_subject": "B06",
+          "source_session": "B0603",
+          "source_crop_samples": [
+            58,
+            108
+          ]
+        }
+      ]
+    }
+  ]
+}

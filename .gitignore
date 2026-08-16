@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 运行时数据（上传缓存 / 解析缓存）
+backend/data/
+backend/models/
+
+# Node
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# 原始语料（重新生成语言模型数据时才需要下载）
+frontend/scripts/count_1w.txt
+frontend/scripts/count_2w.txt
+frontend/scripts/engine.mjs
+
+# 截图缓存与临时文件
+.shots/
+*.log
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

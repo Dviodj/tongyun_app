@@ -1,0 +1,9 @@
+# 通韵 TongYun BCI Web — 后端依赖
+# 基础（必需）
+numpy
+scipy
+scikit-learn
+# 解析 GDF/EDF/FIF 源文件（可选，缺省时这些格式只保存不解析）
+mne
+# 加载 Hybrid FBC-MIFormer 部署权重（可选，缺省时使用回退分类器/模拟模式）
+torch

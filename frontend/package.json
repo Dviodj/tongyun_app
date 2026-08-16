@@ -1,0 +1,30 @@
+{
+  "name": "tongyun-bci-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "通韵 TongYun BCI — 脑电莫尔斯码识别前端（macOS 风格）",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "gen:lm": "node scripts/build-lm-data.mjs",
+    "test:engine": "npx esbuild src/lib/predictor/engine.ts --bundle --format=esm --outfile=scripts/engine.mjs && node scripts/smoke-engine.mjs",
+    "test:e2e": "node scripts/e2e-verify.mjs",
+    "test:gdf": "node scripts/e2e-gdf.mjs"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.0.4",
+    "playwright-core": "^1.62.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7"
+  }
+}
