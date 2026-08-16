@@ -127,6 +127,8 @@ button {
   -webkit-backdrop-filter: saturate(180%) blur(24px);
   border-bottom: 1px solid var(--border);
   user-select: none;
+  /* 桌面版无边框窗口的拖拽区域 */
+  -webkit-app-region: drag;
 }
 
 .traffic-lights {
@@ -134,6 +136,11 @@ button {
   gap: 8px;
   position: absolute;
   left: 16px;
+  -webkit-app-region: no-drag;
+}
+
+.titlebar-status {
+  -webkit-app-region: no-drag;
 }
 
 .light {
@@ -146,6 +153,33 @@ button {
 .light-close { background: #ff5f57; }
 .light-minimize { background: #febc2e; }
 .light-zoom { background: #28c840; }
+
+/* 桌面版：交通灯悬停时显示 × − + 符号 */
+.traffic-lights.is-functional .light {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: transform 100ms ease;
+}
+
+.traffic-lights.is-functional .light:active {
+  transform: scale(0.88);
+}
+
+.traffic-lights.is-functional:hover .light::after {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.traffic-lights.is-functional:hover .light-close::after { content: "×"; }
+.traffic-lights.is-functional:hover .light-minimize::after { content: "−"; }
+.traffic-lights.is-functional:hover .light-zoom::after { content: "+"; }
 
 .titlebar-title {
   flex: 1;

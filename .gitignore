@@ -12,6 +12,10 @@ node_modules/
 frontend/dist/
 *.tsbuildinfo
 
+# 桌面版构建产物
+desktop/node_modules/
+desktop/release/
+
 # 原始语料（重新生成语言模型数据时才需要下载）
 frontend/scripts/count_1w.txt
 frontend/scripts/count_2w.txt

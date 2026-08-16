@@ -41,6 +41,32 @@ backend/backend.py (纯标准库 HTTP 桥接服务)
 
 ## 🚀 快速开始
 
+### 方式 A：桌面软件（推荐）
+
+构建好的安装器安装后即可使用（Electron 壳 + 自动拉起 Python 后端）：
+
+```powershell
+# 打包桌面版（生成安装器与便携版到 desktop/release/）
+cd frontend && npm install && npm run build && cd ..
+cd desktop  && npm install && npm run dist
+
+# 开发时直接运行桌面版
+双击「启动桌面版.bat」  或  cd desktop && npm start
+```
+
+桌面版特性：
+- 无边框 macOS 风格窗口，红黄绿交通灯可点击（关闭/最小化/最大化）
+- 启动时自动检测 Python 与后端依赖（numpy/scipy/scikit-learn），缺失时一键 `pip install`
+- 后端作为子进程随应用启停，崩溃自动提示重试；算法仓库（深度学习版）源码随安装包分发
+- 首次运行需要本机 Python 3.9+（解析 GDF/EDF/FIF 与加载权重另需 mne / torch，按提示安装）
+
+> 💡 国内网络下载 Electron 二进制较慢时，打包前设置镜像：
+> `$env:ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"`
+> `$env:ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"`
+> 若 npm 拦截了 postinstall 脚本，先执行 `npm approve-scripts electron electron-winstaller` 再 `npm install`。
+
+### 方式 B：浏览器运行
+
 ### 环境
 
 - Python ≥ 3.9：`pip install numpy scipy scikit-learn`（解析 GDF/EDF/FIF 另需 `pip install mne`，加载权重另需 `torch`）
@@ -121,9 +147,12 @@ tongyun-bci-web/
 │   │   ├── state/store.ts    # zustand 全局状态
 │   │   └── styles.css        # macOS 设计系统（明暗双主题）
 │   └── scripts/              # 语料构建、冒烟测试、E2E
+├── desktop/                  # Electron 桌面壳（安装器/便携版打包）
+│   ├── main.cjs / preload.cjs / icon.png
+│   └── scripts/make-icon.mjs # 图标生成器（纯 Node PNG 编码）
 ├── sample-data/hello-world/  # 事件流演示数据（10 个 FIF + manifest）
 ├── docs/screenshots/         # 界面截图
-└── 启动服务.bat
+└── 启动服务.bat / 启动桌面版.bat
 ```
 
 ## 📄 数据与代码来源

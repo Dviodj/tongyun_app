@@ -47,8 +47,10 @@ git push -u origin main
 
 - 在仓库 **Settings → General → Social preview** 上传一张截图（可用 `docs/screenshots/main.png`）
 - 若日后想把算法仓库一并关联，可在 README 中加链接或使用 `git submodule add https://github.com/Dviodj/tongyun-bci-algorithm.git`
+- **桌面版安装包**（`desktop/release/*.exe`）不入库：在 Release 页面手动上传，或让用户按 README「桌面版打包」自行构建
 
 ### 注意
 
 - 不要提交 `backend/data/`（运行时上传缓存）与 `frontend/scripts/count_*.txt`（原始语料，已在 .gitignore 中排除）
 - 训练权重 `.pt/.pth` 不属于本仓库，按算法仓库说明单独训练与部署
+- `desktop/node_modules`、`desktop/release` 已忽略；`tongyun-bci-algorithm/` 是算法包源码副本（随桌面版打包），更新算法后同步复制
