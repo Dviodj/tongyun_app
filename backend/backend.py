@@ -1268,13 +1268,17 @@ def parse_args() -> argparse.Namespace:
     )
     default_model = os.environ.get("TONGYUN_MODEL_PATH")
     if default_model is None:
-        for candidate in (
-            backend_dir / "models" / "hybrid_fbc_mi_former.pt",
-            backend_dir.parent / "models" / "hybrid_fbc_mi_former.pt",
+        # 自动搜索常见权重位置：backend/models/、项目根 models/、算法仓库 models/
+        for directory in (
+            backend_dir / "models",
+            backend_dir.parent / "models",
+            Path(os.environ.get("TONGYUN_ALGORITHM_REPO", backend_dir.parent / "tongyun-bci-algorithm")) / "models",
         ):
-            if candidate.exists():
-                default_model = str(candidate)
-                break
+            if directory.is_dir():
+                candidates = sorted(directory.glob("*.pt")) + sorted(directory.glob("*.pth"))
+                if candidates:
+                    default_model = str(candidates[0])
+                    break
     parser.add_argument("--model", type=Path, default=Path(default_model) if default_model else None)
     parser.add_argument("--threshold", type=float, default=DEFAULT_THRESHOLD)
     parser.add_argument("--static", type=Path, default=backend_dir.parent / "frontend" / "dist")

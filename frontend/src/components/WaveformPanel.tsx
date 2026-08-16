@@ -25,7 +25,7 @@ import {
 } from "../lib/morse";
 import { useAppStore } from "../state/store";
 import { getHashParams } from "../App";
-import { Button, Card, Chip, Segmented, SectionHeader } from "./ui";
+import { Button, Chip, Segmented } from "./ui";
 
 const CHANNEL_COLORS = ["#ff453a", "#30d158", "#0a84ff"];
 const CHANNEL_NAMES = ["C3", "Cz", "C4"];
@@ -457,33 +457,7 @@ export function WaveformPanel() {
   };
 
   return (
-    <Card className="waveform-card">
-      <SectionHeader
-        title="源文件波形"
-        subtitle="C3 / Cz / C4 · 100 Hz · 事件标记与播放头"
-        aside={
-          <div className="waveform-controls">
-            <Segmented
-              ariaLabel="播放速度"
-              options={[
-                { value: "0.5", label: "0.5×" },
-                { value: "1", label: "1×" },
-                { value: "2", label: "2×" },
-              ]}
-              value={speed}
-              onChange={setSpeed}
-            />
-            <Button variant="primary" onClick={togglePlay} disabled={!waveform} title="播放 / 暂停">
-              {status === "playing" ? <Pause size={15} weight="fill" /> : <Play size={15} weight="fill" />}
-              {status === "playing" ? "暂停" : "播放"}
-            </Button>
-            <Button variant="quiet" onClick={resetPlayback} title="回到开头">
-              <Stop size={15} weight="fill" /> 重置
-            </Button>
-          </div>
-        }
-      />
-
+    <div className="waveform-card widget-segment">
       <div
         className={`source-dropzone ${dragging ? "is-dragging" : ""} ${uploading ? "is-uploading" : ""}`}
         onDragEnter={(event) => {
@@ -523,26 +497,48 @@ export function WaveformPanel() {
         </label>
       </div>
 
-      <div className="sim-row">
-        <span className="sim-label">
-          <Brain size={14} weight="duotone" /> 无数据时快速体验：
-        </span>
-        <input
-          className="sim-input"
-          value={simText}
-          onChange={(event) => setSimText(event.target.value)}
-          aria-label="模拟文本"
-          placeholder="HELLO WORLD"
-        />
-        <Button variant="quiet" onClick={() => void handleSimulation()}>
-          <Sparkle size={14} weight="fill" /> 生成模拟脑电
-        </Button>
-        {source?.labels?.length ? (
-          <Button variant="quiet" onClick={() => void handleTrainFallback()} disabled={training}>
-            <Brain size={14} weight="duotone" />
-            {training ? "训练中…" : "训练 CSP+LDA 回退"}
+      <div className="waveform-toolbar">
+        <div className="waveform-controls">
+          <Segmented
+            ariaLabel="播放速度"
+            options={[
+              { value: "0.5", label: "0.5×" },
+              { value: "1", label: "1×" },
+              { value: "2", label: "2×" },
+            ]}
+            value={speed}
+            onChange={setSpeed}
+          />
+          <Button variant="primary" onClick={togglePlay} disabled={!waveform} title="播放 / 暂停">
+            {status === "playing" ? <Pause size={15} weight="fill" /> : <Play size={15} weight="fill" />}
+            {status === "playing" ? "暂停" : "播放"}
           </Button>
-        ) : null}
+          <Button variant="quiet" onClick={resetPlayback} title="回到开头">
+            <Stop size={15} weight="fill" /> 重置
+          </Button>
+        </div>
+        <div className="toolbar-spacer" />
+        <div className="sim-row">
+          <span className="sim-label">
+            <Brain size={14} weight="duotone" /> 模拟：
+          </span>
+          <input
+            className="sim-input"
+            value={simText}
+            onChange={(event) => setSimText(event.target.value)}
+            aria-label="模拟文本"
+            placeholder="HELLO WORLD"
+          />
+          <Button variant="quiet" onClick={() => void handleSimulation()}>
+            <Sparkle size={14} weight="fill" /> 生成模拟脑电
+          </Button>
+          {source?.labels?.length ? (
+            <Button variant="quiet" onClick={() => void handleTrainFallback()} disabled={training}>
+              <Brain size={14} weight="duotone" />
+              {training ? "训练中…" : "训练 CSP+LDA 回退"}
+            </Button>
+          ) : null}
+        </div>
         {historySources.length > 1 && (
           <select
             className="history-select"
@@ -578,6 +574,6 @@ export function WaveformPanel() {
           {notice}
         </div>
       )}
-    </Card>
+    </div>
   );
 }

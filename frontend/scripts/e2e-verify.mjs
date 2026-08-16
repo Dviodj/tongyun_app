@@ -26,10 +26,11 @@ await page.waitForTimeout(800);
 check("标题栏渲染", await page.locator(".titlebar-title").count() === 1);
 check("交通灯渲染", (await page.locator(".traffic-lights .light").count()) === 3);
 check("侧栏三个导航项", (await page.locator(".nav-item").count()) === 3);
-check("句子面板存在", await page.locator(".sentence-card").isVisible());
-check("莫尔斯面板存在", await page.locator(".morse-card").isVisible());
-check("波形面板存在", await page.locator(".waveform-card").isVisible());
-check("三层预测存在", (await page.locator(".prediction-row").count()) === 3);
+check("句子小组件存在", await page.locator(".sentence-card").isVisible());
+check("莫尔斯小组件存在", await page.locator(".morse-card").isVisible());
+check("波形小组件存在", await page.locator(".waveform-card").isVisible());
+check("单词预测小组件存在（唯一）", (await page.locator(".prediction-widget").count()) === 1);
+check("主页面无大标题", (await page.locator(".main-view .section-header").count()) === 0);
 check("确定/取消/暂停按钮存在", (await page.locator(".action-confirm").count() + await page.locator(".action-cancel").count() + await page.locator(".action-pause").count()) === 3);
 
 // 无横向溢出
@@ -49,11 +50,19 @@ await page.keyboard.press("Backspace");
 const afterBackspace = await page.locator(".sentence-text").innerText();
 check("取消键撤销字符", !afterBackspace.includes("A"), afterBackspace);
 
-// ---- 3. 键盘点划 + 预测 ----
+// ---- 3. 键盘点划 + 单词预测 ----
 await page.keyboard.type(".");
 await page.keyboard.type("-");
-const letterChips = await page.locator(".chip-letter b").allInnerTexts();
-check("字母预测随点划前缀更新（含 A）", letterChips.includes("A"), letterChips.join(","));
+const wordCount = await page.locator(".prediction-word-main").count();
+const wordText = wordCount ? await page.locator(".prediction-word-main b").innerText() : "";
+check("单词预测唯一且非空", wordCount === 1 && wordText.trim().length > 0, `count=${wordCount} word=${wordText}`);
+// 点击采用预测单词
+if (wordCount) {
+  await page.locator(".prediction-word-main").click();
+  await page.waitForTimeout(200);
+  const afterAdopt = await page.locator(".sentence-text").innerText();
+  check("点击采用预测单词写入句子", afterAdopt.includes(wordText), afterAdopt);
+}
 
 // ---- 4. 设置页 ----
 await page.goto(BASE + "#settings", { waitUntil: "networkidle" });
@@ -70,15 +79,15 @@ await page.locator(".accent-swatch").nth(3).click(); // 红色
 const accentAfter = await page.evaluate(() => document.documentElement.style.getPropertyValue("--accent").trim());
 check("强调色切换生效", accentAfter === "#ff453a", accentAfter);
 // 隐藏板块
-await page.locator(".panel-toggle-row", { hasText: "下个句子预测" }).locator(".toggle").click();
+await page.locator(".panel-toggle-row", { hasText: "下个单词预测" }).locator(".toggle").click();
 await page.waitForTimeout(200);
 await page.goto(BASE + "#main", { waitUntil: "networkidle" });
 await page.waitForTimeout(500);
-check("板块隐藏生效（预测行变 2）", (await page.locator(".prediction-row").count()) === 2);
+check("板块隐藏生效（单词预测消失）", (await page.locator(".prediction-widget").count()) === 0);
 // 还原
 await page.goto(BASE + "#settings", { waitUntil: "networkidle" });
 await page.waitForTimeout(400);
-await page.locator(".panel-toggle-row", { hasText: "下个句子预测" }).locator(".toggle").click();
+await page.locator(".panel-toggle-row", { hasText: "下个单词预测" }).locator(".toggle").click();
 await page.waitForTimeout(200);
 await page.locator(".accent-swatch").first().click();
 

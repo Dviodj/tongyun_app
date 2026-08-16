@@ -5,10 +5,8 @@ import {
   Brain,
   Check,
   Layout,
-  LetterCircleV,
   Moon,
   Palette,
-  SquaresFour,
   Sun,
   TextT,
   Waveform,
@@ -23,11 +21,9 @@ const PANEL_ITEMS: Array<{
   hint: string;
   icon: typeof Brain;
 }> = [
-  { key: "sentence", label: "识别句子面板", hint: "主显示区：解码句子与纠错建议", icon: Brain },
-  { key: "letter", label: "下个字母预测", hint: "点划前缀 / 词前缀的字母概率", icon: LetterCircleV },
-  { key: "word", label: "下个单词预测", hint: "n-gram 单词补全与续写", icon: TextT },
-  { key: "sentencePred", label: "下个句子预测", hint: "常用语句与束搜索扩展", icon: SquaresFour },
-  { key: "morse", label: "莫尔斯码面板", hint: "点划流、当前字母与手动输入", icon: Waveform },
+  { key: "sentence", label: "识别句子", hint: "主显示区：解码句子与纠错建议", icon: Brain },
+  { key: "word", label: "下个单词预测", hint: "最可能的下一个单词", icon: TextT },
+  { key: "morse", label: "莫尔斯码", hint: "点划流、当前字母与手动输入", icon: Waveform },
   { key: "waveform", label: "源文件波形", hint: "三通道波形、事件标记与回放", icon: Layout },
 ];
 
@@ -116,7 +112,7 @@ export function SettingsView() {
       </Card>
 
       <Card className="settings-card">
-        <SectionHeader title="板块显隐" subtitle="选择主页面显示哪些板块" aside={<SquaresFour size={20} weight="duotone" />} />
+        <SectionHeader title="板块显隐" subtitle="选择主页面显示哪些板块" aside={<Layout size={20} weight="duotone" />} />
         <div className="panel-toggle-list">
           {PANEL_ITEMS.map((item) => {
             const Icon = item.icon;

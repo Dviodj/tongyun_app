@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Clock, Info, Lightning, PencilSimple, Timer } from "@phosphor-icons/react";
 import { setWindow as apiSetWindow } from "../api/client";
 import { useAppStore } from "../state/store";
-import { Button, Card, Chip, SectionHeader } from "./ui";
+import { Button, Card, Chip } from "./ui";
 
 const DISPLAY_MIN = -1;
 const DISPLAY_MAX = 5;
@@ -277,27 +277,21 @@ export function TimeWindowView() {
   return (
     <div className="window-view">
       <Card className="window-card">
-        <SectionHeader
-          title="解码时间窗"
-          subtitle="拖动两侧手柄调整窗口起止，拖动中间平移整窗；模型输入统一重采样为 3×351 @100Hz"
-          aside={
-            <div className="preset-row">
-              {PRESETS.map((preset) => {
-                const Icon = preset.icon;
-                return (
-                  <Chip
-                    key={preset.label}
-                    onClick={() => applyPreset(preset)}
-                    className="chip-preset"
-                    selected={draft.tmin === preset.tmin && draft.tmax === preset.tmax}
-                  >
-                    <Icon size={13} weight="duotone" /> {preset.label}
-                  </Chip>
-                );
-              })}
-            </div>
-          }
-        />
+        <div className="window-presets-row">
+          {PRESETS.map((preset) => {
+            const Icon = preset.icon;
+            return (
+              <Chip
+                key={preset.label}
+                onClick={() => applyPreset(preset)}
+                className="chip-preset"
+                selected={draft.tmin === preset.tmin && draft.tmax === preset.tmax}
+              >
+                <Icon size={13} weight="duotone" /> {preset.label}
+              </Chip>
+            );
+          })}
+        </div>
 
         <div className="window-canvas-wrap">
           <canvas
@@ -373,7 +367,6 @@ export function TimeWindowView() {
       </Card>
 
       <Card className="window-explain">
-        <SectionHeader title="时间窗说明" subtitle="参考 tongyun-bci-algorithm 的 epoch 约定" />
         <ul>
           <li>
             <b>训练默认 0.5–4.0 s</b>：避开前 0.5 s 运动伪迹，覆盖运动想象全程；100 Hz 下为 351 个采样点。

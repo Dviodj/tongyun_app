@@ -6,14 +6,11 @@
 
 ## ✨ 功能
 
-### 主页面
+### 主页面（桌面小组件式拼接，无大标题）
 - **识别句子**（主显示区）：脑电信号解码出的句子实时呈现，AI 建议从不静默覆盖原文，纠错必须人工点「接受」
-- **三层智能预测**（离线 n-gram 语言模型，纯前端推理）：
-  - 下个字母：按当前点划前缀 + 词前缀概率排序
-  - 下个单词：1-gram/2-gram 插值 + 前缀补全
-  - 下个句子：常用语句模板 + 2-gram 束搜索扩展
-- **确定 / 取消 / 暂停**：确认当前字母或选中的预测、撤销、暂停回放（支持键盘：`.` `←` 点、`-` `→` 划、`Enter` 确定、`Backspace` 撤销）
-- 下半区：**识别莫尔斯码**（点划流 + 当前字母 + 手动输入）与**源文件波形**（C3/Cz/C4 三通道 Canvas 渲染、事件标记、播放头、0.5×/1×/2× 回放、文件拖拽上传）
+- **下个单词预测**：只给出**最可能的那一个**单词（离线 n-gram 语言模型，纯前端推理），点击即可采用
+- **确定 / 取消 / 暂停**：确认当前字母、撤销、暂停回放（支持键盘：`.` `←` 点、`-` `→` 划、`Enter` 确定、`Backspace` 撤销）
+- **识别莫尔斯码**：点划流 + 当前字母 + 手动输入，与**源文件波形**（C3/Cz/C4 三通道 Canvas、事件标记、播放头、0.5×/1×/2× 回放、拖拽上传）无缝拼接
 
 ### 时间窗调整
 - 对应算法仓库的 0.5–4.0 s epoch 约定（100 Hz 下 351 采样点）
@@ -23,7 +20,7 @@
 ### 设置
 - 主题：浅色 / 深色 / 跟随系统，8 种 macOS 强调色
 - 布局：下半区上下堆叠 / 左右并排
-- 板块显隐：识别句子、三层预测、莫尔斯码、波形图均可独立开关
+- 板块显隐：识别句子、单词预测、莫尔斯码、波形图均可独立开关
 - 置信门控阈值（0.5–0.95）实时应用到算法桥接服务
 
 ## 🏗 架构
@@ -84,16 +81,19 @@ npm run dev          # Vite 热更新，/api 自动代理到 127.0.0.1:8765
 ## 🔌 算法接入
 
 - 接口契约沿用 `ALGORITHM_INTEGRATION.md` 约定：`POST /api/algorithm/predict`，epoch 为 `3×351`（C3/Cz/C4，100 Hz，0.5–4.0 s 窗口），返回点/划 + 置信度，低于 0.68 拒绝
-- 权重加载顺序：`tongyun_bci_algorithm.HybridFBCMIFormerWrapper`（当前仓库公开包）→ `models.eeg_transformer.EEGConformerWrapper`（旧分支兼容）
+- 权重加载顺序：`tongyun_bci_algorithm.HybridFBCMIFormerWrapper`（深度学习版，首选）→ `models.eeg_transformer.EEGConformerWrapper`（旧分支兼容）→ 频带能量+LDA 回退（需训练）→ 模拟模式
+- 权重自动搜索：`TONGYUN_MODEL_PATH` 环境变量、`backend/models/`、项目根 `models/`、算法仓库 `models/` 下的 `.pt/.pth`
+- 可用 `python backend/tools/make_dummy_checkpoint.py` 生成随机权重检查点，验证深度学习加载链路（`model_loaded: true` + `predict` 通路）；随机权重无解码能力，仅用于链路自检
 - 回退分类器特征选择有据可查：`backend/tools/debug_features.py`（均值/标准差 + μ/β 频带能量 + C3/C4 不对称性 → LDA）
 
 ## 🧠 预测模块
 
-`frontend/src/lib/predictor/`：n-gram 语言模型，数据来自公开语料（见下），构建产物已入库，开箱即用：
+`frontend/src/lib/predictor/`：n-gram 语言模型，数据来自公开语料（见下），构建产物已入库，开箱即用。
+前端只展示「最可能的下一个单词」单个候选；完整的字母/句子预测与纠错 API 保留在引擎中（`engine.ts`）供后续扩展。
 
 | 文件 | 说明 |
 |---|---|
-| `engine.ts` | 字母/单词/句子预测 + 拼写纠错（编辑距离 ≤2） |
+| `engine.ts` | 单词/字母/句子预测 + 拼写纠错（编辑距离 ≤2） |
 | `data/words.ts` | 30,000 高频词 + 词频（Norvig count_1w） |
 | `data/bigrams.ts` | 40,000 二元组（Norvig count_2w） |
 | `templates.ts` | 60+ 常用沟通语句模板 |

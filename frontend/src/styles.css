@@ -586,6 +586,41 @@ button.chip:active {
 }
 
 /* --------------------------------------------------------------------------
+   小组件拼接容器（桌面小组件风格：无大标题，板块之间无缝衔接）
+   -------------------------------------------------------------------------- */
+
+.widget-stack {
+  background: var(--card-bg);
+  backdrop-filter: saturate(160%) blur(18px);
+  -webkit-backdrop-filter: saturate(160%) blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.widget-segment {
+  padding: 13px 16px;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.widget-stack > .widget-segment + .widget-segment,
+.widget-stack > .widget-segment + .widget-actions {
+  border-top: 1px solid var(--border);
+}
+
+.widget-actions {
+  padding: 11px 16px 13px;
+}
+
+/* --------------------------------------------------------------------------
    主页面
    -------------------------------------------------------------------------- */
 
@@ -596,18 +631,9 @@ button.chip:active {
   min-height: 100%;
 }
 
-.main-top {
-  display: flex;
-  flex-direction: column;
-}
-
 .main-bottom {
   display: flex;
   min-height: 0;
-}
-
-.main-bottom.is-stacked {
-  flex-direction: column;
 }
 
 .main-bottom.is-split {
@@ -616,13 +642,15 @@ button.chip:active {
   align-items: stretch;
 }
 
-.main-bottom.is-split > .card {
+.main-bottom.is-split > .widget-stack {
   flex: 1;
+  min-width: 0;
   margin-bottom: 0;
 }
 
-.main-bottom.is-split .waveform-card {
-  min-width: 0;
+.main-bottom.is-split .waveform-canvas-wrap {
+  height: 100%;
+  min-height: 240px;
 }
 
 /* 操作键 */
@@ -630,7 +658,6 @@ button.chip:active {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 4px 2px 18px;
 }
 
 .action-confirm,
@@ -650,11 +677,32 @@ button.chip:active {
 }
 
 /* --------------------------------------------------------------------------
-   句子面板
+   句子小组件
    -------------------------------------------------------------------------- */
 
 .sentence-card {
-  margin-bottom: 14px;
+  display: block;
+}
+
+.widget-status-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.widget-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.2px;
+  color: var(--text-3);
+}
+
+.widget-eyebrow svg {
+  color: var(--accent);
 }
 
 .sentence-stage {
@@ -792,13 +840,59 @@ button.chip:active {
 }
 
 /* --------------------------------------------------------------------------
-   预测面板
+   单词预测小组件
    -------------------------------------------------------------------------- */
 
-.prediction-card {
-  margin-bottom: 4px;
+.prediction-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
+.prediction-word-main {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--canvas-bg);
+  padding: 11px 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 120ms ease, transform 80ms ease, box-shadow 120ms ease;
+}
+
+.prediction-word-main:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.prediction-word-main:active {
+  transform: scale(0.99);
+}
+
+.prediction-word-main b {
+  font-size: 27px;
+  font-weight: 750;
+  letter-spacing: 0.4px;
+  color: var(--accent);
+}
+
+.prediction-word-conf {
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.prediction-word-adopt {
+  margin-left: auto;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-3);
+}
+
+/* 旧预测行的样式保留给设置页展示，不再用于主页面 */
 .prediction-row {
   display: flex;
   align-items: flex-start;
@@ -876,32 +970,31 @@ button.chip:active {
 }
 
 /* --------------------------------------------------------------------------
-   莫尔斯面板
+   莫尔斯小组件
    -------------------------------------------------------------------------- */
 
 .morse-card {
-  margin-bottom: 14px;
+  display: block;
 }
 
-.manual-input {
+.morse-toolbar {
   display: flex;
-  gap: 2px;
-}
-
-.morse-stage {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: var(--canvas-bg);
-  border: 1px solid var(--border);
+  flex-wrap: wrap;
+  margin-bottom: 12px;
 }
 
 .morse-group {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.manual-input {
+  display: flex;
+  gap: 2px;
 }
 
 .morse-group-label {
@@ -1016,18 +1109,33 @@ button.chip:active {
 }
 
 /* --------------------------------------------------------------------------
-   波形面板
+   波形小组件
    -------------------------------------------------------------------------- */
 
 .waveform-card {
+  display: block;
+}
+
+.waveform-toolbar {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.toolbar-spacer {
+  flex: 1;
 }
 
 .waveform-controls {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.waveform-toolbar .sim-row {
+  margin-bottom: 0;
 }
 
 .source-dropzone {
@@ -1214,11 +1322,11 @@ button.chip:active {
   margin-bottom: 14px;
 }
 
-.preset-row {
+.window-presets-row {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  margin-bottom: 12px;
 }
 
 .chip-preset {

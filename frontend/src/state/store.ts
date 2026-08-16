@@ -10,8 +10,6 @@ import {
 } from "../lib/morse";
 import {
   completeWord,
-  nextLetter,
-  predictSentences,
   suggestCorrections,
   type CorrectionSuggestion,
   type Prediction,
@@ -25,9 +23,7 @@ export type SessionStatus = "idle" | "playing" | "paused";
 
 export interface PanelVisibility {
   sentence: boolean;
-  letter: boolean;
   word: boolean;
-  sentencePred: boolean;
   morse: boolean;
   waveform: boolean;
 }
@@ -97,9 +93,7 @@ let eventId = 0;
 
 const DEFAULT_PANELS: PanelVisibility = {
   sentence: true,
-  letter: true,
   word: true,
-  sentencePred: true,
   morse: true,
   waveform: true,
 };
@@ -369,13 +363,11 @@ export const useAppStore = create<AppState>()(
 );
 
 // ---------------------------------------------------------------------------
-// 预测派生计算
+// 预测派生计算：只保留「下个单词」，且只取最可能的一个
 // ---------------------------------------------------------------------------
 
 export interface PredictionSet {
-  letters: Prediction[];
   words: Prediction[];
-  sentences: Prediction[];
   currentWordPrefix: string;
   pendingLetter: string | null;
 }
@@ -385,9 +377,8 @@ export function computePredictions(state: AppState): PredictionSet {
   const morsePrefix = state.morseGroup.join("");
   const pendingLetter = morsePrefix ? decodeMorse(morsePrefix) : null;
 
-  const letters = nextLetter(morsePrefix, currentWord, 6);
-  const words = completeWord(currentWord, 5);
-  const sentences = predictSentences(state.sentenceText, 5);
+  // 单一候选：当前单词未完成时补全，句尾空格时给出下一个词
+  const words = completeWord(currentWord, 1);
 
-  return { letters, words, sentences, currentWordPrefix: currentWord, pendingLetter };
+  return { words, currentWordPrefix: currentWord, pendingLetter };
 }

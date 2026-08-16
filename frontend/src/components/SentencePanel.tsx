@@ -1,8 +1,8 @@
-/** 识别句子面板：主显示区 + 纠错建议 + 当前解码状态。 */
+/** 识别句子小组件：主显示区 + 纠错建议（无大标题，与其它板块拼接）。 */
 import { ArrowRight, Check, Sparkle, X } from "@phosphor-icons/react";
 import { useAppStore } from "../state/store";
 import { decodeMorse } from "../lib/morse";
-import { Card, Chip, EmptyHint, SectionHeader } from "./ui";
+import { Chip, EmptyHint } from "./ui";
 
 export function SentencePanel() {
   const sentenceText = useAppStore((state) => state.sentenceText);
@@ -15,23 +15,22 @@ export function SentencePanel() {
   const ignoreCorrection = useAppStore((state) => state.ignoreCorrection);
 
   return (
-    <Card className="sentence-card">
-      <SectionHeader
-        title="识别句子"
-        subtitle="由脑电信号解码生成，AI 预测不会自动覆盖原文"
-        aside={
-          lastRejection ? (
+    <div className="sentence-card widget-segment">
+      {(lastRejection || lastDecoded) && (
+        <div className="widget-status-row">
+          {lastRejection ? (
             <Chip className="chip-reject">
               低置信已拒绝 {Math.round(lastRejection.confidence * 100)}% &lt;{" "}
               {Math.round(lastRejection.threshold * 100)}%
             </Chip>
-          ) : lastDecoded ? (
+          ) : null}
+          {lastDecoded ? (
             <Chip className="chip-decoded">
               最近解码 {lastDecoded.letter} · {lastDecoded.morse || "—"}
             </Chip>
-          ) : null
-        }
-      />
+          ) : null}
+        </div>
+      )}
 
       <div className="sentence-stage" aria-live="polite">
         <span className="sentence-text">
@@ -90,6 +89,6 @@ export function SentencePanel() {
       {sentenceText.length === 0 && morseGroup.length === 0 && (
         <EmptyHint>按「▶ 播放」回放源文件，或在下方手动输入点划（. / -）体验解码与预测</EmptyHint>
       )}
-    </Card>
+    </div>
   );
 }
